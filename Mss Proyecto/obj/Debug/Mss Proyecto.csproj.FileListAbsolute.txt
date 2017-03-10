@@ -1,0 +1,43 @@
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\WordTemplate\Anexo_Template.dotx
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\WordTemplate\Contrato_Template.dotx
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\WordTemplate\Finiquito_Template.dotx
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\Mss Proyecto.exe.config
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\Mss Proyecto.exe.manifest
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\Mss Proyecto.application
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\Mss Proyecto.exe
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\Mss Proyecto.pdb
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\EntityFramework.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\MssBD.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\Negocio.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\MssBD.pdb
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\Negocio.pdb
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\EntityFramework.xml
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss Proyecto.csprojResolveAssemblyReference.cache
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Anexos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.BusquedaEmpleados.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.CentroDeCostos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Contrato.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Gigantografia.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Logs.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.VigenciaDocumentos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Visar_Remuneraciones.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Visar_Finiquitos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Visar_Anexos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Visar_Contratos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.EstructuraSueldos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Finiquitos.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Inicio.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.MensajeControlado.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Principal.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Properties.Resources.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Empleados.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Usuario.resources
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss Proyecto.csproj.GenerateResource.Cache
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss Proyecto.TrustInfo.xml
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss Proyecto.exe.manifest
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss Proyecto.application
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss Proyecto.exe
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss Proyecto.pdb
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\Mss Proyecto\obj\Debug\Mss_Proyecto.Documentos.Vigentes.resources

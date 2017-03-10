@@ -1,0 +1,1060 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MSS_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Comunas">
+    <Key>
+      <PropertyRef Name="comuna_id" />
+    </Key>
+    <Property Name="comuna_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comuna_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Provincias" Relationship="Self.FK_Comunas_Provincias" FromRole="Comunas" ToRole="Provincias" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_Comunas" FromRole="Comunas" ToRole="Personal" />
+  </EntityType>
+  <EntityType Name="Paises">
+    <Key>
+      <PropertyRef Name="Pais_Codigo" />
+    </Key>
+    <Property Name="Pais_Codigo" Type="Int32" Nullable="false" />
+    <Property Name="Pais_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pais_Orden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Regiones" Relationship="Self.FK_Regiones_Paises" FromRole="Paises" ToRole="Regiones" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_Paises" FromRole="Paises" ToRole="Personal" />
+  </EntityType>
+  <EntityType Name="Privilegios">
+    <Key>
+      <PropertyRef Name="Privilegio_Id" />
+    </Key>
+    <Property Name="Privilegio_Id" Type="Int32" Nullable="false" />
+    <Property Name="Privilegio_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Usuarios" FromRole="Privilegios" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Provincias">
+    <Key>
+      <PropertyRef Name="provincia_id" />
+    </Key>
+    <Property Name="provincia_id" Type="Int32" Nullable="false" />
+    <Property Name="provincia_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="region_id" Type="Int32" />
+    <NavigationProperty Name="Comunas" Relationship="Self.FK_Comunas_Provincias" FromRole="Provincias" ToRole="Comunas" />
+    <NavigationProperty Name="Regiones" Relationship="MSS_BDModel.FK_Provincias_Regiones" FromRole="Provincias" ToRole="Regiones" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_Provincias" FromRole="Provincias" ToRole="Personal" />
+  </EntityType>
+  <EntityType Name="Regiones">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="Int32" Nullable="false" />
+    <Property Name="region_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="region_ordinal" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pais_Codigo" Type="Int32" />
+    <NavigationProperty Name="Paises" Relationship="Self.FK_Regiones_Paises" FromRole="Regiones" ToRole="Paises" />
+    <NavigationProperty Name="Provincias" Relationship="MSS_BDModel.FK_Provincias_Regiones" FromRole="Regiones" ToRole="Provincias" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_Regiones" FromRole="Regiones" ToRole="Personal" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Usuario_Id" />
+    </Key>
+    <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+    <Property Name="Usuario_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Privilegio_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Privilegios" Relationship="Self.FK_Usuarios_Usuarios" FromRole="Usuarios" ToRole="Privilegios" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_Usuarios" FromRole="Usuarios" ToRole="Personal" />
+    <NavigationProperty Name="Log" Relationship="MSS_BDModel.FK_Log_Usuarios" FromRole="Usuarios" ToRole="Log" />
+    <NavigationProperty Name="Log_Documentos" Relationship="MSS_BDModel.FK_Log_Documentos_Usuarios" FromRole="Usuarios" ToRole="Log_Documentos" />
+    <NavigationProperty Name="Documentos" Relationship="MSS_BDModel.FK_Documentos_Usuarios" FromRole="Usuarios" ToRole="Documentos" />
+  </EntityType>
+  <Association Name="FK_Comunas_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+    <End Role="Comunas" Type="Self.Comunas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="provincia_id" />
+      </Principal>
+      <Dependent Role="Comunas">
+        <PropertyRef Name="provincia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regiones_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Regiones" Type="Self.Regiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="Pais_Codigo" />
+      </Principal>
+      <Dependent Role="Regiones">
+        <PropertyRef Name="Pais_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Usuarios">
+    <End Role="Privilegios" Type="Self.Privilegios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilegios">
+        <PropertyRef Name="Privilegio_Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Privilegio_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MSS_BDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comunas" EntityType="Self.Comunas" />
+    <EntitySet Name="Paises" EntityType="Self.Paises" />
+    <EntitySet Name="Privilegios" EntityType="Self.Privilegios" />
+    <EntitySet Name="Provincias" EntityType="Self.Provincias" />
+    <EntitySet Name="Regiones" EntityType="Self.Regiones" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Comunas_Provincias" Association="Self.FK_Comunas_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Comunas" EntitySet="Comunas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regiones_Paises" Association="Self.FK_Regiones_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Regiones" EntitySet="Regiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Usuarios" Association="Self.FK_Usuarios_Usuarios">
+      <End Role="Privilegios" EntitySet="Privilegios" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <FunctionImport Name="Prueba" ReturnType="Collection(MSS_BDModel.Prueba_Result)">
+      <Parameter Name="Param1" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MSS_BDModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MSS_BDModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK_Provincias_Regiones" Association="MSS_BDModel.FK_Provincias_Regiones">
+      <End Role="Regiones" EntitySet="Regiones" />
+      <End Role="Provincias" EntitySet="Provincias" />
+    </AssociationSet>
+    <FunctionImport Name="ConsultaEmpleados_Rut_Centro">
+      <Parameter Name="Rut" Mode="In" Type="String" />
+      <Parameter Name="CentroCosto" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CentrosDeCostos" EntityType="MSS_BDModel.CentrosDeCostos" />
+    <EntitySet Name="EstructuraSueldos" EntityType="MSS_BDModel.EstructuraSueldos" />
+    <EntitySet Name="Personal" EntityType="MSS_BDModel.Personal" />
+    <AssociationSet Name="FK_Personal_CentrosDeCostos" Association="MSS_BDModel.FK_Personal_CentrosDeCostos">
+      <End Role="CentrosDeCostos" EntitySet="CentrosDeCostos" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Comunas" Association="MSS_BDModel.FK_Personal_Comunas">
+      <End Role="Comunas" EntitySet="Comunas" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_EstructuraSueldos" Association="MSS_BDModel.FK_Personal_EstructuraSueldos">
+      <End Role="EstructuraSueldos" EntitySet="EstructuraSueldos" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Paises" Association="MSS_BDModel.FK_Personal_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Provincias" Association="MSS_BDModel.FK_Personal_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Regiones" Association="MSS_BDModel.FK_Personal_Regiones">
+      <End Role="Regiones" EntitySet="Regiones" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Usuarios" Association="MSS_BDModel.FK_Personal_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <FunctionImport Name="ConsultaEmpleados_Rut_Centro1" ReturnType="Collection(MSS_BDModel.ConsultaEmpleados_Rut_Centro1_Result)">
+      <Parameter Name="Rut" Mode="In" Type="String" />
+      <Parameter Name="CentroCosto" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="DocumentoTipo" EntityType="MSS_BDModel.DocumentoTipo" />
+    <EntitySet Name="Vw_EmpleadosTodos" EntityType="MSS_BDModel.Vw_EmpleadosTodos" />
+    <EntitySet Name="Afp" EntityType="MSS_BDModel.Afp" />
+    <EntitySet Name="Isapres" EntityType="MSS_BDModel.Isapres" />
+    <AssociationSet Name="FK_Personal_Afp" Association="MSS_BDModel.FK_Personal_Afp">
+      <End Role="Afp" EntitySet="Afp" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Isapres" Association="MSS_BDModel.FK_Personal_Isapres">
+      <End Role="Isapres" EntitySet="Isapres" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <FunctionImport Name="CON_Empleados_Rut_Centro" ReturnType="Collection(MSS_BDModel.CON_Empleados_Rut_Centro_Result)">
+      <Parameter Name="Rut" Mode="In" Type="String" />
+      <Parameter Name="CentroCosto" Mode="In" Type="String" />
+      <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+      <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Log" EntityType="MSS_BDModel.Log" />
+    <AssociationSet Name="FK_Log_Usuarios" Association="MSS_BDModel.FK_Log_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <EntitySet Name="Log_Documentos" EntityType="MSS_BDModel.Log_Documentos" />
+    <AssociationSet Name="FK_Log_Documentos_DocumentoTipo" Association="MSS_BDModel.FK_Log_Documentos_DocumentoTipo">
+      <End Role="DocumentoTipo" EntitySet="DocumentoTipo" />
+      <End Role="Log_Documentos" EntitySet="Log_Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Documentos_Usuarios" Association="MSS_BDModel.FK_Log_Documentos_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Log_Documentos" EntitySet="Log_Documentos" />
+    </AssociationSet>
+    <EntitySet Name="VW_Documentos_Visar" EntityType="MSS_BDModel.VW_Documentos_Visar" />
+    <FunctionImport Name="SP_CON_Documentos" ReturnType="Collection(MSS_BDModel.SP_CON_Documentos_Result)">
+      <Parameter Name="Vigencia" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="Anexos" EntityType="MSS_BDModel.Anexos" />
+    <EntitySet Name="Contratos" EntityType="MSS_BDModel.Contratos" />
+    <EntitySet Name="Finiquito" EntityType="MSS_BDModel.Finiquito" />
+    <EntitySet Name="Remuneraciones" EntityType="MSS_BDModel.Remuneraciones" />
+    <AssociationSet Name="FK_Remuneraciones_Finiquito" Association="MSS_BDModel.FK_Remuneraciones_Finiquito">
+      <End Role="Finiquito" EntitySet="Finiquito" />
+      <End Role="Remuneraciones" EntitySet="Remuneraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_Afp" Association="MSS_BDModel.FK_Contratos_Afp">
+      <End Role="Afp" EntitySet="Afp" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_CentrosDeCostos" Association="MSS_BDModel.FK_Contratos_CentrosDeCostos">
+      <End Role="CentrosDeCostos" EntitySet="CentrosDeCostos" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_EstructuraSueldos" Association="MSS_BDModel.FK_Contratos_EstructuraSueldos">
+      <End Role="EstructuraSueldos" EntitySet="EstructuraSueldos" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_Isapres" Association="MSS_BDModel.FK_Contratos_Isapres">
+      <End Role="Isapres" EntitySet="Isapres" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <EntitySet Name="VW_DOC_Anexos" EntityType="MSS_BDModel.VW_DOC_Anexos" />
+    <EntitySet Name="VW_DOC_Finiquitos" EntityType="MSS_BDModel.VW_DOC_Finiquitos" />
+    <EntitySet Name="VW_DOC_Contratos" EntityType="MSS_BDModel.VW_DOC_Contratos" />
+    <EntitySet Name="Documentos" EntityType="MSS_BDModel.Documentos" />
+    <AssociationSet Name="FK_Anexos_Documentos" Association="MSS_BDModel.FK_Anexos_Documentos">
+      <End Role="Documentos" EntitySet="Documentos" />
+      <End Role="Anexos" EntitySet="Anexos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_Documentos" Association="MSS_BDModel.FK_Contratos_Documentos">
+      <End Role="Documentos" EntitySet="Documentos" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documentos_DocumentoTipo" Association="MSS_BDModel.FK_Documentos_DocumentoTipo">
+      <End Role="DocumentoTipo" EntitySet="DocumentoTipo" />
+      <End Role="Documentos" EntitySet="Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documentos_Personal" Association="MSS_BDModel.FK_Documentos_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="Documentos" EntitySet="Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documentos_Usuarios" Association="MSS_BDModel.FK_Documentos_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Documentos" EntitySet="Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Finiquito_Documentos" Association="MSS_BDModel.FK_Finiquito_Documentos">
+      <End Role="Documentos" EntitySet="Documentos" />
+      <End Role="Finiquito" EntitySet="Finiquito" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="Prueba_Result">
+    <Property Type="Int32" Name="Privilegio_Id" Nullable="false" />
+    <Property Type="String" Name="Privilegio_Nombre" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <Association Name="FK_Provincias_Regiones">
+    <End Type="MSS_BDModel.Regiones" Role="Regiones" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Provincias" Role="Provincias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regiones">
+        <PropertyRef Name="region_id" />
+      </Principal>
+      <Dependent Role="Provincias">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CentrosDeCostos">
+    <Key>
+      <PropertyRef Name="CentroId" />
+    </Key>
+    <Property Name="CentroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CentroNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Centro_Codigo" Type="Int32" />
+    <Property Name="EstructuraSueldo_Id" Type="Int32" />
+    <Property Name="Vigencia" Type="Boolean" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_CentrosDeCostos" FromRole="CentrosDeCostos" ToRole="Personal" />
+    <NavigationProperty Name="Contratos" Relationship="MSS_BDModel.FK_Contratos_CentrosDeCostos" FromRole="CentrosDeCostos" ToRole="Contratos" />
+  </EntityType>
+  <EntityType Name="EstructuraSueldos">
+    <Key>
+      <PropertyRef Name="EstructuraSueldo_Id" />
+    </Key>
+    <Property Name="EstructuraSueldo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estructura_Codigo" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SueldoBase" Type="Double" />
+    <Property Name="Gratificacion" Type="Double" />
+    <Property Name="BonoAsistencia" Type="Double" />
+    <Property Name="BonoProduccion" Type="Double" />
+    <Property Name="Colacion" Type="Double" />
+    <Property Name="Movilizacion" Type="Double" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_EstructuraSueldos" FromRole="EstructuraSueldos" ToRole="Personal" />
+    <Property Name="BonoTurno" Type="Double" />
+    <NavigationProperty Name="Contratos" Relationship="MSS_BDModel.FK_Contratos_EstructuraSueldos" FromRole="EstructuraSueldos" ToRole="Contratos" />
+  </EntityType>
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="Rut" Type="Int32" Nullable="false" />
+    <Property Name="Dv" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Pais_Codigo" Type="Int32" />
+    <Property Name="Region_Codigo" Type="Int32" />
+    <Property Name="Provincia_Codigo" Type="Int32" />
+    <Property Name="Comuna_Codigo" Type="Int32" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="TelFijo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TelCelular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NombreContacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Parentesco" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TelContactoFijo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TelContactoCelular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TipoContrato" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="CursoOS10" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Credencial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="Calzado" Type="Int32" />
+    <Property Name="Pantalon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Polera" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Polar" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Casaca" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Corbata" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Gorro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Cazadora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CentroCosto_Id" Type="Int32" />
+    <Property Name="Usuario_Id" Type="Int32" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EstructuraSueldo_Id" Type="Int32" />
+    <NavigationProperty Name="CentrosDeCostos" Relationship="MSS_BDModel.FK_Personal_CentrosDeCostos" FromRole="Personal" ToRole="CentrosDeCostos" />
+    <NavigationProperty Name="Comunas" Relationship="MSS_BDModel.FK_Personal_Comunas" FromRole="Personal" ToRole="Comunas" />
+    <NavigationProperty Name="EstructuraSueldos" Relationship="MSS_BDModel.FK_Personal_EstructuraSueldos" FromRole="Personal" ToRole="EstructuraSueldos" />
+    <NavigationProperty Name="Paises" Relationship="MSS_BDModel.FK_Personal_Paises" FromRole="Personal" ToRole="Paises" />
+    <NavigationProperty Name="Provincias" Relationship="MSS_BDModel.FK_Personal_Provincias" FromRole="Personal" ToRole="Provincias" />
+    <NavigationProperty Name="Regiones" Relationship="MSS_BDModel.FK_Personal_Regiones" FromRole="Personal" ToRole="Regiones" />
+    <NavigationProperty Name="Usuarios" Relationship="MSS_BDModel.FK_Personal_Usuarios" FromRole="Personal" ToRole="Usuarios" />
+    <Property Name="EstadoCivil" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Isapre_Id" Type="Int32" />
+    <Property Name="Afp_Id" Type="Int32" />
+    <NavigationProperty Name="Afp" Relationship="MSS_BDModel.FK_Personal_Afp" FromRole="Personal" ToRole="Afp" />
+    <NavigationProperty Name="Isapres" Relationship="MSS_BDModel.FK_Personal_Isapres" FromRole="Personal" ToRole="Isapres" />
+    <NavigationProperty Name="Documentos" Relationship="MSS_BDModel.FK_Documentos_Personal" FromRole="Personal" ToRole="Documentos" />
+  </EntityType>
+  <Association Name="FK_Personal_CentrosDeCostos">
+    <End Type="MSS_BDModel.CentrosDeCostos" Role="CentrosDeCostos" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CentrosDeCostos">
+        <PropertyRef Name="CentroId" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="CentroCosto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Comunas">
+    <End Type="MSS_BDModel.Comunas" Role="Comunas" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comunas">
+        <PropertyRef Name="comuna_id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Comuna_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_EstructuraSueldos">
+    <End Type="MSS_BDModel.EstructuraSueldos" Role="EstructuraSueldos" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstructuraSueldos">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Paises">
+    <End Type="MSS_BDModel.Paises" Role="Paises" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="Pais_Codigo" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Pais_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Provincias">
+    <End Type="MSS_BDModel.Provincias" Role="Provincias" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="provincia_id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Provincia_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Regiones">
+    <End Type="MSS_BDModel.Regiones" Role="Regiones" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regiones">
+        <PropertyRef Name="region_id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Region_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Usuarios">
+    <End Type="MSS_BDModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ConsultaEmpleados_Rut_Centro1_Result">
+    <Property Type="String" Name="region_nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Pais_Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="comuna_nombre" Nullable="true" MaxLength="70" />
+    <Property Type="String" Name="CentroNombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="provincia_nombre" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Rut" Nullable="false" />
+    <Property Type="String" Name="Dv" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="70" />
+    <Property Type="Int32" Name="Pais_Codigo" Nullable="true" />
+    <Property Type="Int32" Name="Region_Codigo" Nullable="true" />
+    <Property Type="Int32" Name="Provincia_Codigo" Nullable="true" />
+    <Property Type="Int32" Name="Comuna_Codigo" Nullable="true" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+    <Property Type="String" Name="TelFijo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TelCelular" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreContacto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Parentesco" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TelContactoFijo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TelContactoCelular" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TipoContrato" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="FechaIngreso" Nullable="true" />
+    <Property Type="String" Name="CursoOS10" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Credencial" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
+    <Property Type="Int32" Name="Calzado" Nullable="true" />
+    <Property Type="String" Name="Pantalon" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Polera" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Polar" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Casaca" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Corbata" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Gorro" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Cazadora" Nullable="true" MaxLength="10" />
+    <Property Type="Binary" Name="Imagen" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="CentroCosto_Id" Nullable="true" />
+    <Property Type="Int32" Name="Usuario_Id" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EstructuraSueldo_Id" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="DocumentoTipo">
+    <Key>
+      <PropertyRef Name="DocumentoTipo_Id" />
+    </Key>
+    <Property Name="DocumentoTipo_Id" Type="Int32" Nullable="false" />
+    <Property Name="NombreDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Log_Documentos" Relationship="MSS_BDModel.FK_Log_Documentos_DocumentoTipo" FromRole="DocumentoTipo" ToRole="Log_Documentos" />
+    <NavigationProperty Name="Documentos" Relationship="MSS_BDModel.FK_Documentos_DocumentoTipo" FromRole="DocumentoTipo" ToRole="Documentos" />
+  </EntityType>
+  <EntityType Name="Vw_EmpleadosTodos">
+    <Key>
+      <PropertyRef Name="Rut" />
+      <PropertyRef Name="Dv" />
+      <PropertyRef Name="Privilegio_Id" />
+    </Key>
+    <Property Name="region_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Pais_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="comuna_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="CentroNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Rut" Type="Int32" Nullable="false" />
+    <Property Name="Dv" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Pais_Codigo" Type="Int32" />
+    <Property Name="Region_Codigo" Type="Int32" />
+    <Property Name="Provincia_Codigo" Type="Int32" />
+    <Property Name="Comuna_Codigo" Type="Int32" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="TelFijo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TelCelular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NombreContacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Parentesco" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TelContactoFijo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TelContactoCelular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TipoContrato" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="CursoOS10" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Credencial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="Calzado" Type="Int32" />
+    <Property Name="Pantalon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Polera" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Polar" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Casaca" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Corbata" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Gorro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Cazadora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CentroCosto_Id" Type="Int32" />
+    <Property Name="Usuario_Id" Type="Int32" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EstructuraSueldo_Id" Type="Int32" />
+    <Property Name="Privilegio_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Afp">
+    <Key>
+      <PropertyRef Name="Afp_Id" />
+    </Key>
+    <Property Name="Afp_Id" Type="Int32" Nullable="false" />
+    <Property Name="Afp_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_Afp" FromRole="Afp" ToRole="Personal" />
+    <NavigationProperty Name="Contratos" Relationship="MSS_BDModel.FK_Contratos_Afp" FromRole="Afp" ToRole="Contratos" />
+  </EntityType>
+  <EntityType Name="Isapres">
+    <Key>
+      <PropertyRef Name="Isapre_Id" />
+    </Key>
+    <Property Name="Isapre_Id" Type="Int32" Nullable="false" />
+    <Property Name="Isapre_Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Personal_Isapres" FromRole="Isapres" ToRole="Personal" />
+    <NavigationProperty Name="Contratos" Relationship="MSS_BDModel.FK_Contratos_Isapres" FromRole="Isapres" ToRole="Contratos" />
+  </EntityType>
+  <Association Name="FK_Personal_Afp">
+    <End Type="MSS_BDModel.Afp" Role="Afp" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afp">
+        <PropertyRef Name="Afp_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Afp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Isapres">
+    <End Type="MSS_BDModel.Isapres" Role="Isapres" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isapres">
+        <PropertyRef Name="Isapre_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Isapre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="CON_Empleados_Rut_Centro_Result">
+    <Property Type="String" Name="region_nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Pais_Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="comuna_nombre" Nullable="true" MaxLength="70" />
+    <Property Type="String" Name="CentroNombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="provincia_nombre" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Rut" Nullable="false" />
+    <Property Type="String" Name="Dv" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="70" />
+    <Property Type="Int32" Name="Pais_Codigo" Nullable="true" />
+    <Property Type="Int32" Name="Region_Codigo" Nullable="true" />
+    <Property Type="Int32" Name="Provincia_Codigo" Nullable="true" />
+    <Property Type="Int32" Name="Comuna_Codigo" Nullable="true" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+    <Property Type="String" Name="TelFijo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TelCelular" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="NombreContacto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Parentesco" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TelContactoFijo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TelContactoCelular" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="TipoContrato" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="FechaIngreso" Nullable="true" />
+    <Property Type="String" Name="CursoOS10" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Credencial" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
+    <Property Type="Int32" Name="Calzado" Nullable="true" />
+    <Property Type="String" Name="Pantalon" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Polera" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Polar" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Casaca" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Corbata" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Gorro" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Cazadora" Nullable="true" MaxLength="10" />
+    <Property Type="Binary" Name="Imagen" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="CentroCosto_Id" Nullable="true" />
+    <Property Type="Int32" Name="Usuario_Id" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="EstructuraSueldo_Id" Nullable="true" />
+    <Property Type="String" Name="EstadoCivil" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="Isapre_Id" Nullable="true" />
+    <Property Type="Int32" Name="Afp_Id" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Log_Id" />
+    </Key>
+    <Property Name="Log_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+    <Property Name="Accion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Usuarios" Relationship="MSS_BDModel.FK_Log_Usuarios" FromRole="Log" ToRole="Usuarios" />
+  </EntityType>
+  <Association Name="FK_Log_Usuarios">
+    <End Type="MSS_BDModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="MSS_BDModel.Log" Role="Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Log_Documentos">
+    <Key>
+      <PropertyRef Name="LogDoc_Id" />
+    </Key>
+    <Property Name="LogDoc_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+    <Property Name="Accion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="DocTipo_Id" Type="Int32" />
+    <NavigationProperty Name="DocumentoTipo" Relationship="MSS_BDModel.FK_Log_Documentos_DocumentoTipo" FromRole="Log_Documentos" ToRole="DocumentoTipo" />
+    <NavigationProperty Name="Usuarios" Relationship="MSS_BDModel.FK_Log_Documentos_Usuarios" FromRole="Log_Documentos" ToRole="Usuarios" />
+  </EntityType>
+  <Association Name="FK_Log_Documentos_DocumentoTipo">
+    <End Type="MSS_BDModel.DocumentoTipo" Role="DocumentoTipo" Multiplicity="1" />
+    <End Type="MSS_BDModel.Log_Documentos" Role="Log_Documentos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoTipo">
+        <PropertyRef Name="DocumentoTipo_Id" />
+      </Principal>
+      <Dependent Role="Log_Documentos">
+        <PropertyRef Name="LogDoc_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Documentos_Usuarios">
+    <End Type="MSS_BDModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="MSS_BDModel.Log_Documentos" Role="Log_Documentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Log_Documentos">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VW_Documentos_Visar">
+    <Key>
+      <PropertyRef Name="PorVisar" />
+      <PropertyRef Name="Personal_Id" />
+      <PropertyRef Name="Rut" />
+      <PropertyRef Name="Dv" />
+      <PropertyRef Name="Pais_Nombre" />
+      <PropertyRef Name="comuna_nombre" />
+      <PropertyRef Name="region_nombre" />
+      <PropertyRef Name="Documento_Id" />
+    </Key>
+    <Property Name="PorVisar" Type="Boolean" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="NombreDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Personal_Id" Type="Int32" Nullable="false" />
+    <Property Name="CentroCosto_Id" Type="Int32" />
+    <Property Name="EstructuraSueldo_Id" Type="Int32" />
+    <Property Name="Comuna_Id" Type="Int32" />
+    <Property Name="Isapre_Id" Type="Int32" />
+    <Property Name="Pais_Id" Type="Int32" />
+    <Property Name="Provincia_Id" Type="Int32" />
+    <Property Name="Region_ID" Type="Int32" />
+    <Property Name="Afp_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Rut" Type="Int32" Nullable="false" />
+    <Property Name="Dv" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CentroNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Pais_Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="comuna_nombre" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Estructura_Codigo" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="region_nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Isapre_Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Documento_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="SP_CON_Documentos_Result">
+    <Property Type="Boolean" Name="PorVisar" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+    <Property Type="String" Name="NombreDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Personal_Id" Nullable="false" />
+    <Property Type="Int32" Name="CentroCosto_Id" Nullable="true" />
+    <Property Type="Int32" Name="EstructuraSueldo_Id" Nullable="true" />
+    <Property Type="Int32" Name="Comuna_Id" Nullable="true" />
+    <Property Type="Int32" Name="Isapre_Id" Nullable="true" />
+    <Property Type="Int32" Name="Pais_Id" Nullable="true" />
+    <Property Type="Int32" Name="Provincia_Id" Nullable="true" />
+    <Property Type="Int32" Name="Region_ID" Nullable="true" />
+    <Property Type="String" Name="Afp_Nombre" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="Rut" Nullable="false" />
+    <Property Type="String" Name="Dv" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CentroNombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Pais_Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="provincia_nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="comuna_nombre" Nullable="false" MaxLength="70" />
+    <Property Type="Int32" Name="Estructura_Codigo" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="region_nombre" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="Anexos">
+    <Key>
+      <PropertyRef Name="Anexo_Id" />
+    </Key>
+    <Property Name="Anexo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Documento_Id" Type="Int32" />
+    <Property Name="FechaDesde" Type="DateTime" Precision="0" />
+    <Property Name="FechaHasta" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Documentos" Relationship="MSS_BDModel.FK_Anexos_Documentos" FromRole="Anexos" ToRole="Documentos" />
+  </EntityType>
+  <EntityType Name="Contratos">
+    <Key>
+      <PropertyRef Name="Contrato_Id" />
+    </Key>
+    <Property Name="Contrato_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Documento_Id" Type="Int32" />
+    <Property Name="Isapre_Id" Type="Int32" />
+    <Property Name="Afp_Id" Type="Int32" />
+    <Property Name="CentroCosto_Id" Type="Int32" />
+    <Property Name="EstructuraSueldo_Id" Type="Int32" />
+    <Property Name="TipoContrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaDesde" Type="DateTime" Precision="0" />
+    <Property Name="FechaHasta" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Afp" Relationship="MSS_BDModel.FK_Contratos_Afp" FromRole="Contratos" ToRole="Afp" />
+    <NavigationProperty Name="CentrosDeCostos" Relationship="MSS_BDModel.FK_Contratos_CentrosDeCostos" FromRole="Contratos" ToRole="CentrosDeCostos" />
+    <NavigationProperty Name="EstructuraSueldos" Relationship="MSS_BDModel.FK_Contratos_EstructuraSueldos" FromRole="Contratos" ToRole="EstructuraSueldos" />
+    <NavigationProperty Name="Isapres" Relationship="MSS_BDModel.FK_Contratos_Isapres" FromRole="Contratos" ToRole="Isapres" />
+    <NavigationProperty Name="Documentos" Relationship="MSS_BDModel.FK_Contratos_Documentos" FromRole="Contratos" ToRole="Documentos" />
+  </EntityType>
+  <EntityType Name="Finiquito">
+    <Key>
+      <PropertyRef Name="Finiquito_Id" />
+    </Key>
+    <Property Name="Finiquito_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Articulo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Articulo_Numero" Type="Int32" />
+    <Property Name="Comentario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Vacaciones" Type="Double" />
+    <Property Name="Documento_Id" Type="Int32" />
+    <NavigationProperty Name="Remuneraciones" Relationship="MSS_BDModel.FK_Remuneraciones_Finiquito" FromRole="Finiquito" ToRole="Remuneraciones" />
+    <NavigationProperty Name="Documentos" Relationship="MSS_BDModel.FK_Finiquito_Documentos" FromRole="Finiquito" ToRole="Documentos" />
+  </EntityType>
+  <EntityType Name="Remuneraciones">
+    <Key>
+      <PropertyRef Name="Remuneracion_Id" />
+    </Key>
+    <Property Name="Remuneracion_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaTermino" Type="DateTime" Precision="0" />
+    <Property Name="monto" Type="Double" />
+    <Property Name="Finiquito_Id" Type="Int32" />
+    <NavigationProperty Name="Finiquito" Relationship="MSS_BDModel.FK_Remuneraciones_Finiquito" FromRole="Remuneraciones" ToRole="Finiquito" />
+  </EntityType>
+  <Association Name="FK_Remuneraciones_Finiquito">
+    <End Type="MSS_BDModel.Finiquito" Role="Finiquito" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Remuneraciones" Role="Remuneraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Finiquito">
+        <PropertyRef Name="Finiquito_Id" />
+      </Principal>
+      <Dependent Role="Remuneraciones">
+        <PropertyRef Name="Finiquito_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_Afp">
+    <End Type="MSS_BDModel.Afp" Role="Afp" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Contratos" Role="Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afp">
+        <PropertyRef Name="Afp_Id" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="Afp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_CentrosDeCostos">
+    <End Type="MSS_BDModel.CentrosDeCostos" Role="CentrosDeCostos" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Contratos" Role="Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CentrosDeCostos">
+        <PropertyRef Name="CentroId" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="CentroCosto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_EstructuraSueldos">
+    <End Type="MSS_BDModel.EstructuraSueldos" Role="EstructuraSueldos" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Contratos" Role="Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstructuraSueldos">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_Isapres">
+    <End Type="MSS_BDModel.Isapres" Role="Isapres" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Contratos" Role="Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isapres">
+        <PropertyRef Name="Isapre_Id" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="Isapre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VW_DOC_Anexos">
+    <Key>
+      <PropertyRef Name="DocumentoTipo_Id" />
+      <PropertyRef Name="Usuario_Id" />
+      <PropertyRef Name="Personal_Id" />
+      <PropertyRef Name="PorVisar" />
+      <PropertyRef Name="Documento_Id" />
+    </Key>
+    <Property Name="DocumentoTipo_Id" Type="Int32" Nullable="false" />
+    <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+    <Property Name="Personal_Id" Type="Int32" Nullable="false" />
+    <Property Name="PorVisar" Type="Boolean" Nullable="false" />
+    <Property Name="RutaFinal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="FechaDesde" Type="DateTime" Precision="0" />
+    <Property Name="FechaHasta" Type="DateTime" Precision="0" />
+    <Property Name="Anexo_Id" Type="Int32" />
+    <Property Name="Documento_Id" Type="Int32" Nullable="false" />
+    <Property Name="Dv" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Rut" Type="Int32" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Comuna_Codigo" Type="Int32" />
+    <Property Name="comuna_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="TelFijo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoCivil" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_DOC_Finiquitos">
+    <Key>
+      <PropertyRef Name="Documento_Id" />
+      <PropertyRef Name="DocumentoTipo_Id" />
+      <PropertyRef Name="Usuario_Id" />
+      <PropertyRef Name="Personal_Id" />
+      <PropertyRef Name="PorVisar" />
+    </Key>
+    <Property Name="Documento_Id" Type="Int32" Nullable="false" />
+    <Property Name="DocumentoTipo_Id" Type="Int32" Nullable="false" />
+    <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+    <Property Name="Personal_Id" Type="Int32" Nullable="false" />
+    <Property Name="PorVisar" Type="Boolean" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="RutaFinal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Finiquito_Id" Type="Int32" />
+    <Property Name="Articulo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Articulo_Numero" Type="Int32" />
+    <Property Name="Comentario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Vacaciones" Type="Double" />
+    <Property Name="Comuna_Codigo" Type="Int32" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dv" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Rut" Type="Int32" />
+    <Property Name="comuna_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="VW_DOC_Contratos">
+    <Key>
+      <PropertyRef Name="Rut" />
+      <PropertyRef Name="Dv" />
+    </Key>
+    <Property Name="DocumentoTipo_Id" Type="Int32" />
+    <Property Name="Personal_Id" Type="Int32" />
+    <Property Name="Usuario_Id" Type="Int32" />
+    <Property Name="PorVisar" Type="Boolean" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="RutaFinal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Contrato_Id" Type="Int32" />
+    <Property Name="CentroCosto_Id" Type="Int32" />
+    <Property Name="Isapre_Id" Type="Int32" />
+    <Property Name="Afp_Id" Type="Int32" />
+    <Property Name="EstructuraSueldo_Id" Type="Int32" />
+    <Property Name="TipoContrato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaDesde" Type="DateTime" Precision="0" />
+    <Property Name="FechaHasta" Type="DateTime" Precision="0" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SueldoBase" Type="Double" />
+    <Property Name="Gratificacion" Type="Double" />
+    <Property Name="BonoAsistencia" Type="Double" />
+    <Property Name="BonoProduccion" Type="Double" />
+    <Property Name="Colacion" Type="Double" />
+    <Property Name="Movilizacion" Type="Double" />
+    <Property Name="BonoTurno" Type="Double" />
+    <Property Name="CentroNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Centro_Codigo" Type="Int32" />
+    <Property Name="Afp_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Isapre_Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Rut" Type="Int32" Nullable="false" />
+    <Property Name="Dv" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Comuna_Codigo" Type="Int32" />
+    <Property Name="comuna_nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="TelFijo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="EstadoCivil" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Documento_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Documentos">
+    <Key>
+      <PropertyRef Name="Documento_Id" />
+    </Key>
+    <Property Name="Documento_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PorVisar" Type="Boolean" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="RutaFinal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Anexos" Relationship="MSS_BDModel.FK_Anexos_Documentos" FromRole="Documentos" ToRole="Anexos" />
+    <NavigationProperty Name="Contratos" Relationship="MSS_BDModel.FK_Contratos_Documentos" FromRole="Documentos" ToRole="Contratos" />
+    <NavigationProperty Name="DocumentoTipo" Relationship="MSS_BDModel.FK_Documentos_DocumentoTipo" FromRole="Documentos" ToRole="DocumentoTipo" />
+    <NavigationProperty Name="Personal" Relationship="MSS_BDModel.FK_Documentos_Personal" FromRole="Documentos" ToRole="Personal" />
+    <NavigationProperty Name="Usuarios" Relationship="MSS_BDModel.FK_Documentos_Usuarios" FromRole="Documentos" ToRole="Usuarios" />
+    <NavigationProperty Name="Finiquito" Relationship="MSS_BDModel.FK_Finiquito_Documentos" FromRole="Documentos" ToRole="Finiquito" />
+  </EntityType>
+  <Association Name="FK_Anexos_Documentos">
+    <End Type="MSS_BDModel.Documentos" Role="Documentos" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Anexos" Role="Anexos" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Contratos_Documentos">
+    <End Type="MSS_BDModel.Documentos" Role="Documentos" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Contratos" Role="Contratos" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Documentos_DocumentoTipo">
+    <End Type="MSS_BDModel.DocumentoTipo" Role="DocumentoTipo" Multiplicity="1" />
+    <End Type="MSS_BDModel.Documentos" Role="Documentos" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Documentos_Personal">
+    <End Type="MSS_BDModel.Personal" Role="Personal" Multiplicity="1" />
+    <End Type="MSS_BDModel.Documentos" Role="Documentos" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Documentos_Usuarios">
+    <End Type="MSS_BDModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="MSS_BDModel.Documentos" Role="Documentos" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Finiquito_Documentos">
+    <End Type="MSS_BDModel.Documentos" Role="Documentos" Multiplicity="0..1" />
+    <End Type="MSS_BDModel.Finiquito" Role="Finiquito" Multiplicity="*" />
+  </Association>
+</Schema>

@@ -1,0 +1,10 @@
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\bin\Debug\MssBD.dll.config
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\bin\Debug\MssBD.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\bin\Debug\MssBD.pdb
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\bin\Debug\EntityFramework.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\bin\Debug\EntityFramework.xml
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\obj\Debug\MssBD.dll
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\obj\Debug\MssBD.pdb
+C:\Users\Matias Aravena\Pegas\MSS\Mss Aplicativo\MssBD\obj\Debug\MssBD.csprojResolveAssemblyReference.cache

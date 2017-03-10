@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c95ae7832dcd4e34b288254574ff7435" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="MSS_BDModel.Afp" Width="1.5" PointX="7.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Bancos" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.CentrosDeCostos" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Comunas" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Contratos" Width="1.5" PointX="9.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Documentos" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.EstructuraSueldos" Width="1.5" PointX="7.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Finiquito" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Isapres" Width="1.5" PointX="7.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Log" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Paises" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Personal" Width="1.5" PointX="9.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Privilegios" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Provincias" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Regiones" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Remuneraciones" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Usuarios" Width="1.5" PointX="7.5" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.VW_DOC_Anexos" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.VW_DOC_Contratos" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.VW_DOC_Finiquitos" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.VW_Documentos_Visar" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.Vw_EmpleadosTodos" Width="1.5" PointX="11.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MSS_BDModel.VW_Logs" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="MSS_BDModel.FK_Contratos_Afp" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Afp" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Bancos" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Contratos_CentrosDeCostos" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_CentrosDeCostos" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Comunas_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Comunas" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Contratos_Documentos" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Contratos_EstructuraSueldos" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Contratos_Isapres" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_EstructuraSueldos" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Remuneraciones_Finiquito" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Isapres" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Paises" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Regiones_Paises" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Regiones" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Personal_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Provincias_Regiones" ManuallyRouted="false" />
+        <AssociationConnector Association="MSS_BDModel.FK_Documentos_Personal" />
+        <EntityTypeShape EntityType="MSS_BDModel.Log_Documentos" Width="1.5" PointX="1.875" PointY="20.75" />
+        <AssociationConnector Association="MSS_BDModel.FK_Log_Documentos_Documentos" />
+        <EntityTypeShape EntityType="MSS_BDModel.DocumentoTipo" Width="2" PointX="4.5" PointY="16.25" />
+        <EntityTypeShape EntityType="MSS_BDModel.VW_DOC_Historial" Width="1.5" PointX="14.375" PointY="14.75" />
+        <EntityTypeShape EntityType="MSS_BDModel.Anexos" Width="1.5" PointX="12" PointY="25.5" />
+        <AssociationConnector Association="MSS_BDModel.FK_Anexos_Contratos" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

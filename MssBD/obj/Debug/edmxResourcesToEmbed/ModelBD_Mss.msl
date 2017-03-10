@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MSS_BDModelStoreContainer" CdmEntityContainer="MSS_BDEntities">
+    <EntitySetMapping Name="Comunas">
+      <EntityTypeMapping TypeName="MSS_BDModel.Comunas">
+        <MappingFragment StoreEntitySet="Comunas">
+          <ScalarProperty Name="comuna_id" ColumnName="comuna_id" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paises">
+      <EntityTypeMapping TypeName="MSS_BDModel.Paises">
+        <MappingFragment StoreEntitySet="Paises">
+          <ScalarProperty Name="Pais_Codigo" ColumnName="Pais_Codigo" />
+          <ScalarProperty Name="Pais_Nombre" ColumnName="Pais_Nombre" />
+          <ScalarProperty Name="Pais_Orden" ColumnName="Pais_Orden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Privilegios">
+      <EntityTypeMapping TypeName="MSS_BDModel.Privilegios">
+        <MappingFragment StoreEntitySet="Privilegios">
+          <ScalarProperty Name="Privilegio_Id" ColumnName="Privilegio_Id" />
+          <ScalarProperty Name="Privilegio_Nombre" ColumnName="Privilegio_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provincias">
+      <EntityTypeMapping TypeName="MSS_BDModel.Provincias">
+        <MappingFragment StoreEntitySet="Provincias">
+          <ScalarProperty Name="provincia_id" ColumnName="provincia_id" />
+          <ScalarProperty Name="provincia_nombre" ColumnName="provincia_nombre" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regiones">
+      <EntityTypeMapping TypeName="MSS_BDModel.Regiones">
+        <MappingFragment StoreEntitySet="Regiones">
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="region_nombre" ColumnName="region_nombre" />
+          <ScalarProperty Name="region_ordinal" ColumnName="region_ordinal" />
+          <ScalarProperty Name="Pais_Codigo" ColumnName="Pais_Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MSS_BDModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="MSS_BDModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Usuario_Nombre" ColumnName="Usuario_Nombre" />
+          <ScalarProperty Name="Usuario_Password" ColumnName="Usuario_Password" />
+          <ScalarProperty Name="Privilegio_Id" ColumnName="Privilegio_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Prueba" FunctionName="MSS_BDModel.Store.Prueba">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MSS_BDModel.Prueba_Result">
+          <ScalarProperty Name="Privilegio_Id" ColumnName="Privilegio_Id" />
+          <ScalarProperty Name="Privilegio_Nombre" ColumnName="Privilegio_Nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MSS_BDModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MSS_BDModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MSS_BDModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MSS_BDModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MSS_BDModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MSS_BDModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MSS_BDModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MSS_BDModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MSS_BDModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="CentrosDeCostos">
+      <EntityTypeMapping TypeName="MSS_BDModel.CentrosDeCostos">
+        <MappingFragment StoreEntitySet="CentrosDeCostos">
+          <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="Centro_Codigo" ColumnName="Centro_Codigo" />
+          <ScalarProperty Name="CentroNombre" ColumnName="CentroNombre" />
+          <ScalarProperty Name="CentroId" ColumnName="CentroId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstructuraSueldos">
+      <EntityTypeMapping TypeName="MSS_BDModel.EstructuraSueldos">
+        <MappingFragment StoreEntitySet="EstructuraSueldos">
+          <ScalarProperty Name="BonoTurno" ColumnName="BonoTurno" />
+          <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+          <ScalarProperty Name="Colacion" ColumnName="Colacion" />
+          <ScalarProperty Name="BonoProduccion" ColumnName="BonoProduccion" />
+          <ScalarProperty Name="BonoAsistencia" ColumnName="BonoAsistencia" />
+          <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+          <ScalarProperty Name="SueldoBase" ColumnName="SueldoBase" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estructura_Codigo" ColumnName="Estructura_Codigo" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personal">
+      <EntityTypeMapping TypeName="MSS_BDModel.Personal">
+        <MappingFragment StoreEntitySet="Personal">
+          <ScalarProperty Name="Afp_Id" ColumnName="Afp_Id" />
+          <ScalarProperty Name="Isapre_Id" ColumnName="Isapre_Id" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Cazadora" ColumnName="Cazadora" />
+          <ScalarProperty Name="Gorro" ColumnName="Gorro" />
+          <ScalarProperty Name="Corbata" ColumnName="Corbata" />
+          <ScalarProperty Name="Casaca" ColumnName="Casaca" />
+          <ScalarProperty Name="Polar" ColumnName="Polar" />
+          <ScalarProperty Name="Polera" ColumnName="Polera" />
+          <ScalarProperty Name="Pantalon" ColumnName="Pantalon" />
+          <ScalarProperty Name="Calzado" ColumnName="Calzado" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Credencial" ColumnName="Credencial" />
+          <ScalarProperty Name="CursoOS10" ColumnName="CursoOS10" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="TelContactoCelular" ColumnName="TelContactoCelular" />
+          <ScalarProperty Name="TelContactoFijo" ColumnName="TelContactoFijo" />
+          <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+          <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+          <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
+          <ScalarProperty Name="TelFijo" ColumnName="TelFijo" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Comuna_Codigo" ColumnName="Comuna_Codigo" />
+          <ScalarProperty Name="Provincia_Codigo" ColumnName="Provincia_Codigo" />
+          <ScalarProperty Name="Region_Codigo" ColumnName="Region_Codigo" />
+          <ScalarProperty Name="Pais_Codigo" ColumnName="Pais_Codigo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ConsultaEmpleados_Rut_Centro1" FunctionName="MSS_BDModel.Store.ConsultaEmpleados_Rut_Centro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MSS_BDModel.ConsultaEmpleados_Rut_Centro1_Result">
+          <ScalarProperty Name="region_nombre" ColumnName="region_nombre" />
+          <ScalarProperty Name="Pais_Nombre" ColumnName="Pais_Nombre" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="CentroNombre" ColumnName="CentroNombre" />
+          <ScalarProperty Name="provincia_nombre" ColumnName="provincia_nombre" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Pais_Codigo" ColumnName="Pais_Codigo" />
+          <ScalarProperty Name="Region_Codigo" ColumnName="Region_Codigo" />
+          <ScalarProperty Name="Provincia_Codigo" ColumnName="Provincia_Codigo" />
+          <ScalarProperty Name="Comuna_Codigo" ColumnName="Comuna_Codigo" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="TelFijo" ColumnName="TelFijo" />
+          <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
+          <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+          <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+          <ScalarProperty Name="TelContactoFijo" ColumnName="TelContactoFijo" />
+          <ScalarProperty Name="TelContactoCelular" ColumnName="TelContactoCelular" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="CursoOS10" ColumnName="CursoOS10" />
+          <ScalarProperty Name="Credencial" ColumnName="Credencial" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Calzado" ColumnName="Calzado" />
+          <ScalarProperty Name="Pantalon" ColumnName="Pantalon" />
+          <ScalarProperty Name="Polera" ColumnName="Polera" />
+          <ScalarProperty Name="Polar" ColumnName="Polar" />
+          <ScalarProperty Name="Casaca" ColumnName="Casaca" />
+          <ScalarProperty Name="Corbata" ColumnName="Corbata" />
+          <ScalarProperty Name="Gorro" ColumnName="Gorro" />
+          <ScalarProperty Name="Cazadora" ColumnName="Cazadora" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="DocumentoTipo">
+      <EntityTypeMapping TypeName="MSS_BDModel.DocumentoTipo">
+        <MappingFragment StoreEntitySet="DocumentoTipo">
+          <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
+          <ScalarProperty Name="DocumentoTipo_Id" ColumnName="DocumentoTipo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vw_EmpleadosTodos">
+      <EntityTypeMapping TypeName="MSS_BDModel.Vw_EmpleadosTodos">
+        <MappingFragment StoreEntitySet="Vw_EmpleadosTodos">
+          <ScalarProperty Name="Privilegio_Id" ColumnName="Privilegio_Id" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Cazadora" ColumnName="Cazadora" />
+          <ScalarProperty Name="Gorro" ColumnName="Gorro" />
+          <ScalarProperty Name="Corbata" ColumnName="Corbata" />
+          <ScalarProperty Name="Casaca" ColumnName="Casaca" />
+          <ScalarProperty Name="Polar" ColumnName="Polar" />
+          <ScalarProperty Name="Polera" ColumnName="Polera" />
+          <ScalarProperty Name="Pantalon" ColumnName="Pantalon" />
+          <ScalarProperty Name="Calzado" ColumnName="Calzado" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Credencial" ColumnName="Credencial" />
+          <ScalarProperty Name="CursoOS10" ColumnName="CursoOS10" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="TelContactoCelular" ColumnName="TelContactoCelular" />
+          <ScalarProperty Name="TelContactoFijo" ColumnName="TelContactoFijo" />
+          <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+          <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+          <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
+          <ScalarProperty Name="TelFijo" ColumnName="TelFijo" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Comuna_Codigo" ColumnName="Comuna_Codigo" />
+          <ScalarProperty Name="Provincia_Codigo" ColumnName="Provincia_Codigo" />
+          <ScalarProperty Name="Region_Codigo" ColumnName="Region_Codigo" />
+          <ScalarProperty Name="Pais_Codigo" ColumnName="Pais_Codigo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="provincia_nombre" ColumnName="provincia_nombre" />
+          <ScalarProperty Name="CentroNombre" ColumnName="CentroNombre" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="Pais_Nombre" ColumnName="Pais_Nombre" />
+          <ScalarProperty Name="region_nombre" ColumnName="region_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Afp">
+      <EntityTypeMapping TypeName="MSS_BDModel.Afp">
+        <MappingFragment StoreEntitySet="Afp">
+          <ScalarProperty Name="Afp_Nombre" ColumnName="Afp_Nombre" />
+          <ScalarProperty Name="Afp_Id" ColumnName="Afp_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Isapres">
+      <EntityTypeMapping TypeName="MSS_BDModel.Isapres">
+        <MappingFragment StoreEntitySet="Isapres">
+          <ScalarProperty Name="Isapre_Nombre" ColumnName="Isapre_Nombre" />
+          <ScalarProperty Name="Isapre_Id" ColumnName="Isapre_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CON_Empleados_Rut_Centro" FunctionName="MSS_BDModel.Store.CON_Empleados_Rut_Centro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MSS_BDModel.CON_Empleados_Rut_Centro_Result">
+          <ScalarProperty Name="region_nombre" ColumnName="region_nombre" />
+          <ScalarProperty Name="Pais_Nombre" ColumnName="Pais_Nombre" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="CentroNombre" ColumnName="CentroNombre" />
+          <ScalarProperty Name="provincia_nombre" ColumnName="provincia_nombre" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Pais_Codigo" ColumnName="Pais_Codigo" />
+          <ScalarProperty Name="Region_Codigo" ColumnName="Region_Codigo" />
+          <ScalarProperty Name="Provincia_Codigo" ColumnName="Provincia_Codigo" />
+          <ScalarProperty Name="Comuna_Codigo" ColumnName="Comuna_Codigo" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="TelFijo" ColumnName="TelFijo" />
+          <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
+          <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+          <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+          <ScalarProperty Name="TelContactoFijo" ColumnName="TelContactoFijo" />
+          <ScalarProperty Name="TelContactoCelular" ColumnName="TelContactoCelular" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="CursoOS10" ColumnName="CursoOS10" />
+          <ScalarProperty Name="Credencial" ColumnName="Credencial" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Calzado" ColumnName="Calzado" />
+          <ScalarProperty Name="Pantalon" ColumnName="Pantalon" />
+          <ScalarProperty Name="Polera" ColumnName="Polera" />
+          <ScalarProperty Name="Polar" ColumnName="Polar" />
+          <ScalarProperty Name="Casaca" ColumnName="Casaca" />
+          <ScalarProperty Name="Corbata" ColumnName="Corbata" />
+          <ScalarProperty Name="Gorro" ColumnName="Gorro" />
+          <ScalarProperty Name="Cazadora" ColumnName="Cazadora" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="Isapre_Id" ColumnName="Isapre_Id" />
+          <ScalarProperty Name="Afp_Id" ColumnName="Afp_Id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Log">
+      <EntityTypeMapping TypeName="MSS_BDModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Log_Id" ColumnName="Log_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_Documentos">
+      <EntityTypeMapping TypeName="MSS_BDModel.Log_Documentos">
+        <MappingFragment StoreEntitySet="Log_Documentos">
+          <ScalarProperty Name="DocTipo_Id" ColumnName="DocTipo_Id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="LogDoc_Id" ColumnName="LogDoc_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_Documentos_Visar">
+      <EntityTypeMapping TypeName="MSS_BDModel.VW_Documentos_Visar">
+        <MappingFragment StoreEntitySet="VW_Documentos_Visar">
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+          <ScalarProperty Name="Isapre_Nombre" ColumnName="Isapre_Nombre" />
+          <ScalarProperty Name="region_nombre" ColumnName="region_nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estructura_Codigo" ColumnName="Estructura_Codigo" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="provincia_nombre" ColumnName="provincia_nombre" />
+          <ScalarProperty Name="Pais_Nombre" ColumnName="Pais_Nombre" />
+          <ScalarProperty Name="CentroNombre" ColumnName="CentroNombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Afp_Nombre" ColumnName="Afp_Nombre" />
+          <ScalarProperty Name="Region_ID" ColumnName="Region_ID" />
+          <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+          <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+          <ScalarProperty Name="Isapre_Id" ColumnName="Isapre_Id" />
+          <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="Personal_Id" ColumnName="Personal_Id" />
+          <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="PorVisar" ColumnName="PorVisar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_CON_Documentos" FunctionName="MSS_BDModel.Store.SP_CON_Documentos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MSS_BDModel.SP_CON_Documentos_Result">
+          <ScalarProperty Name="PorVisar" ColumnName="PorVisar" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
+          <ScalarProperty Name="Personal_Id" ColumnName="Personal_Id" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="Comuna_Id" ColumnName="Comuna_Id" />
+          <ScalarProperty Name="Isapre_Id" ColumnName="Isapre_Id" />
+          <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+          <ScalarProperty Name="Provincia_Id" ColumnName="Provincia_Id" />
+          <ScalarProperty Name="Region_ID" ColumnName="Region_ID" />
+          <ScalarProperty Name="Afp_Nombre" ColumnName="Afp_Nombre" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CentroNombre" ColumnName="CentroNombre" />
+          <ScalarProperty Name="Pais_Nombre" ColumnName="Pais_Nombre" />
+          <ScalarProperty Name="provincia_nombre" ColumnName="provincia_nombre" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="Estructura_Codigo" ColumnName="Estructura_Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="region_nombre" ColumnName="region_nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Anexos">
+      <EntityTypeMapping TypeName="MSS_BDModel.Anexos">
+        <MappingFragment StoreEntitySet="Anexos">
+          <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+          <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+          <ScalarProperty Name="Anexo_Id" ColumnName="Anexo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contratos">
+      <EntityTypeMapping TypeName="MSS_BDModel.Contratos">
+        <MappingFragment StoreEntitySet="Contratos">
+          <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+          <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="Afp_Id" ColumnName="Afp_Id" />
+          <ScalarProperty Name="Isapre_Id" ColumnName="Isapre_Id" />
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+          <ScalarProperty Name="Contrato_Id" ColumnName="Contrato_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Finiquito">
+      <EntityTypeMapping TypeName="MSS_BDModel.Finiquito">
+        <MappingFragment StoreEntitySet="Finiquito">
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+          <ScalarProperty Name="Vacaciones" ColumnName="Vacaciones" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Articulo_Numero" ColumnName="Articulo_Numero" />
+          <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+          <ScalarProperty Name="Finiquito_Id" ColumnName="Finiquito_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Remuneraciones">
+      <EntityTypeMapping TypeName="MSS_BDModel.Remuneraciones">
+        <MappingFragment StoreEntitySet="Remuneraciones">
+          <ScalarProperty Name="Finiquito_Id" ColumnName="Finiquito_Id" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Remuneracion_Id" ColumnName="Remuneracion_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_DOC_Anexos">
+      <EntityTypeMapping TypeName="MSS_BDModel.VW_DOC_Anexos">
+        <MappingFragment StoreEntitySet="VW_DOC_Anexos">
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="TelFijo" ColumnName="TelFijo" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="Comuna_Codigo" ColumnName="Comuna_Codigo" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+          <ScalarProperty Name="Anexo_Id" ColumnName="Anexo_Id" />
+          <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+          <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="RutaFinal" ColumnName="RutaFinal" />
+          <ScalarProperty Name="PorVisar" ColumnName="PorVisar" />
+          <ScalarProperty Name="Personal_Id" ColumnName="Personal_Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="DocumentoTipo_Id" ColumnName="DocumentoTipo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_DOC_Finiquitos">
+      <EntityTypeMapping TypeName="MSS_BDModel.VW_DOC_Finiquitos">
+        <MappingFragment StoreEntitySet="VW_DOC_Finiquitos">
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Comuna_Codigo" ColumnName="Comuna_Codigo" />
+          <ScalarProperty Name="Vacaciones" ColumnName="Vacaciones" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Articulo_Numero" ColumnName="Articulo_Numero" />
+          <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+          <ScalarProperty Name="Finiquito_Id" ColumnName="Finiquito_Id" />
+          <ScalarProperty Name="RutaFinal" ColumnName="RutaFinal" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="PorVisar" ColumnName="PorVisar" />
+          <ScalarProperty Name="Personal_Id" ColumnName="Personal_Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="DocumentoTipo_Id" ColumnName="DocumentoTipo_Id" />
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_DOC_Contratos">
+      <EntityTypeMapping TypeName="MSS_BDModel.VW_DOC_Contratos">
+        <MappingFragment StoreEntitySet="VW_DOC_Contratos">
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="TelFijo" ColumnName="TelFijo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="comuna_nombre" ColumnName="comuna_nombre" />
+          <ScalarProperty Name="Comuna_Codigo" ColumnName="Comuna_Codigo" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Dv" ColumnName="Dv" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Isapre_Nombre" ColumnName="Isapre_Nombre" />
+          <ScalarProperty Name="Afp_Nombre" ColumnName="Afp_Nombre" />
+          <ScalarProperty Name="Centro_Codigo" ColumnName="Centro_Codigo" />
+          <ScalarProperty Name="CentroNombre" ColumnName="CentroNombre" />
+          <ScalarProperty Name="BonoTurno" ColumnName="BonoTurno" />
+          <ScalarProperty Name="Movilizacion" ColumnName="Movilizacion" />
+          <ScalarProperty Name="Colacion" ColumnName="Colacion" />
+          <ScalarProperty Name="BonoProduccion" ColumnName="BonoProduccion" />
+          <ScalarProperty Name="BonoAsistencia" ColumnName="BonoAsistencia" />
+          <ScalarProperty Name="Gratificacion" ColumnName="Gratificacion" />
+          <ScalarProperty Name="SueldoBase" ColumnName="SueldoBase" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaHasta" ColumnName="FechaHasta" />
+          <ScalarProperty Name="FechaDesde" ColumnName="FechaDesde" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="EstructuraSueldo_Id" ColumnName="EstructuraSueldo_Id" />
+          <ScalarProperty Name="Afp_Id" ColumnName="Afp_Id" />
+          <ScalarProperty Name="Isapre_Id" ColumnName="Isapre_Id" />
+          <ScalarProperty Name="CentroCosto_Id" ColumnName="CentroCosto_Id" />
+          <ScalarProperty Name="Contrato_Id" ColumnName="Contrato_Id" />
+          <ScalarProperty Name="RutaFinal" ColumnName="RutaFinal" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="PorVisar" ColumnName="PorVisar" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+          <ScalarProperty Name="Personal_Id" ColumnName="Personal_Id" />
+          <ScalarProperty Name="DocumentoTipo_Id" ColumnName="DocumentoTipo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documentos">
+      <EntityTypeMapping TypeName="MSS_BDModel.Documentos">
+        <MappingFragment StoreEntitySet="Documentos">
+          <ScalarProperty Name="RutaFinal" ColumnName="RutaFinal" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="PorVisar" ColumnName="PorVisar" />
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Anexos_Documentos" TypeName="MSS_BDModel.FK_Anexos_Documentos" StoreEntitySet="Anexos">
+      <EndProperty Name="Anexos">
+        <ScalarProperty Name="Anexo_Id" ColumnName="Anexo_Id" />
+      </EndProperty>
+      <EndProperty Name="Documentos">
+        <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+      </EndProperty>
+      <Condition ColumnName="Documento_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Contratos_Documentos" TypeName="MSS_BDModel.FK_Contratos_Documentos" StoreEntitySet="Contratos">
+      <EndProperty Name="Contratos">
+        <ScalarProperty Name="Contrato_Id" ColumnName="Contrato_Id" />
+      </EndProperty>
+      <EndProperty Name="Documentos">
+        <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+      </EndProperty>
+      <Condition ColumnName="Documento_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Documentos_DocumentoTipo" TypeName="MSS_BDModel.FK_Documentos_DocumentoTipo" StoreEntitySet="Documentos">
+      <EndProperty Name="Documentos">
+        <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+      </EndProperty>
+      <EndProperty Name="DocumentoTipo">
+        <ScalarProperty Name="DocumentoTipo_Id" ColumnName="DocumentoTipo_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Documentos_Personal" TypeName="MSS_BDModel.FK_Documentos_Personal" StoreEntitySet="Documentos">
+      <EndProperty Name="Documentos">
+        <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+      </EndProperty>
+      <EndProperty Name="Personal">
+        <ScalarProperty Name="Rut" ColumnName="Personal_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Documentos_Usuarios" TypeName="MSS_BDModel.FK_Documentos_Usuarios" StoreEntitySet="Documentos">
+      <EndProperty Name="Documentos">
+        <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+      </EndProperty>
+      <EndProperty Name="Usuarios">
+        <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Finiquito_Documentos" TypeName="MSS_BDModel.FK_Finiquito_Documentos" StoreEntitySet="Finiquito">
+      <EndProperty Name="Finiquito">
+        <ScalarProperty Name="Finiquito_Id" ColumnName="Finiquito_Id" />
+      </EndProperty>
+      <EndProperty Name="Documentos">
+        <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+      </EndProperty>
+      <Condition ColumnName="Documento_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

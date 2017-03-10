@@ -1,0 +1,1098 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MSS_BDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Afp">
+    <Key>
+      <PropertyRef Name="Afp_Id" />
+    </Key>
+    <Property Name="Afp_Id" Type="int" Nullable="false" />
+    <Property Name="Afp_Nombre" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Anexos">
+    <Key>
+      <PropertyRef Name="Anexo_Id" />
+    </Key>
+    <Property Name="Anexo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Documento_Id" Type="int" />
+    <Property Name="FechaDesde" Type="date" />
+    <Property Name="FechaHasta" Type="date" />
+  </EntityType>
+  <EntityType Name="CentrosDeCostos">
+    <Key>
+      <PropertyRef Name="CentroId" />
+    </Key>
+    <Property Name="CentroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CentroNombre" Type="varchar" MaxLength="100" />
+    <Property Name="Centro_Codigo" Type="int" />
+    <Property Name="EstructuraSueldo_Id" Type="int" />
+    <Property Name="Vigencia" Type="bit" />
+  </EntityType>
+  <EntityType Name="Comunas">
+    <Key>
+      <PropertyRef Name="comuna_id" />
+    </Key>
+    <Property Name="comuna_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comuna_nombre" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="provincia_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contratos">
+    <Key>
+      <PropertyRef Name="Contrato_Id" />
+    </Key>
+    <Property Name="Contrato_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Documento_Id" Type="int" />
+    <Property Name="Isapre_Id" Type="int" />
+    <Property Name="Afp_Id" Type="int" />
+    <Property Name="CentroCosto_Id" Type="int" />
+    <Property Name="EstructuraSueldo_Id" Type="int" />
+    <Property Name="TipoContrato" Type="varchar" MaxLength="50" />
+    <Property Name="FechaDesde" Type="date" />
+    <Property Name="FechaHasta" Type="date" />
+  </EntityType>
+  <EntityType Name="Documentos">
+    <Key>
+      <PropertyRef Name="Documento_Id" />
+    </Key>
+    <Property Name="Documento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocumentoTipo_Id" Type="int" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Personal_Id" Type="int" Nullable="false" />
+    <Property Name="PorVisar" Type="bit" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="RutaFinal" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="DocumentoTipo">
+    <Key>
+      <PropertyRef Name="DocumentoTipo_Id" />
+    </Key>
+    <Property Name="DocumentoTipo_Id" Type="int" Nullable="false" />
+    <Property Name="NombreDocumento" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstructuraSueldos">
+    <Key>
+      <PropertyRef Name="EstructuraSueldo_Id" />
+    </Key>
+    <Property Name="EstructuraSueldo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estructura_Codigo" Type="int" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="SueldoBase" Type="float" />
+    <Property Name="Gratificacion" Type="float" />
+    <Property Name="BonoAsistencia" Type="float" />
+    <Property Name="BonoProduccion" Type="float" />
+    <Property Name="Colacion" Type="float" />
+    <Property Name="Movilizacion" Type="float" />
+    <Property Name="BonoTurno" Type="float" />
+  </EntityType>
+  <EntityType Name="Finiquito">
+    <Key>
+      <PropertyRef Name="Finiquito_Id" />
+    </Key>
+    <Property Name="Finiquito_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Articulo" Type="varchar" MaxLength="20" />
+    <Property Name="Articulo_Numero" Type="int" />
+    <Property Name="Comentario" Type="varchar" MaxLength="200" />
+    <Property Name="Vacaciones" Type="float" />
+    <Property Name="Documento_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Isapres">
+    <Key>
+      <PropertyRef Name="Isapre_Id" />
+    </Key>
+    <Property Name="Isapre_Id" Type="int" Nullable="false" />
+    <Property Name="Isapre_Nombre" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Log_Id" />
+    </Key>
+    <Property Name="Log_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Accion" Type="varchar" MaxLength="200" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log_Documentos">
+    <Key>
+      <PropertyRef Name="LogDoc_Id" />
+    </Key>
+    <Property Name="LogDoc_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Accion" Type="varchar" MaxLength="50" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="DocTipo_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Paises">
+    <Key>
+      <PropertyRef Name="Pais_Codigo" />
+    </Key>
+    <Property Name="Pais_Codigo" Type="int" Nullable="false" />
+    <Property Name="Pais_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pais_Orden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="Rut" Type="int" Nullable="false" />
+    <Property Name="Dv" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="Direccion" Type="varchar" MaxLength="70" />
+    <Property Name="Pais_Codigo" Type="int" />
+    <Property Name="Region_Codigo" Type="int" />
+    <Property Name="Provincia_Codigo" Type="int" />
+    <Property Name="Comuna_Codigo" Type="int" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="TelFijo" Type="varchar" MaxLength="15" />
+    <Property Name="TelCelular" Type="varchar" MaxLength="15" />
+    <Property Name="NombreContacto" Type="varchar" MaxLength="50" />
+    <Property Name="Parentesco" Type="varchar" MaxLength="20" />
+    <Property Name="TelContactoFijo" Type="varchar" MaxLength="15" />
+    <Property Name="TelContactoCelular" Type="varchar" MaxLength="15" />
+    <Property Name="TipoContrato" Type="varchar" MaxLength="20" />
+    <Property Name="FechaIngreso" Type="date" />
+    <Property Name="CursoOS10" Type="varchar" MaxLength="10" />
+    <Property Name="Credencial" Type="varchar" MaxLength="15" />
+    <Property Name="FechaVencimiento" Type="date" />
+    <Property Name="Calzado" Type="int" />
+    <Property Name="Pantalon" Type="varchar" MaxLength="10" />
+    <Property Name="Polera" Type="varchar" MaxLength="10" />
+    <Property Name="Polar" Type="varchar" MaxLength="10" />
+    <Property Name="Casaca" Type="varchar" MaxLength="10" />
+    <Property Name="Corbata" Type="varchar" MaxLength="10" />
+    <Property Name="Gorro" Type="varchar" MaxLength="10" />
+    <Property Name="Cazadora" Type="varchar" MaxLength="10" />
+    <Property Name="Imagen" Type="image" />
+    <Property Name="CentroCosto_Id" Type="int" />
+    <Property Name="Usuario_Id" Type="int" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="EstructuraSueldo_Id" Type="int" />
+    <Property Name="EstadoCivil" Type="varchar" MaxLength="15" />
+    <Property Name="Isapre_Id" Type="int" />
+    <Property Name="Afp_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Privilegios">
+    <Key>
+      <PropertyRef Name="Privilegio_Id" />
+    </Key>
+    <Property Name="Privilegio_Id" Type="int" Nullable="false" />
+    <Property Name="Privilegio_Nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Provincias">
+    <Key>
+      <PropertyRef Name="provincia_id" />
+    </Key>
+    <Property Name="provincia_id" Type="int" Nullable="false" />
+    <Property Name="provincia_nombre" Type="varchar" MaxLength="100" />
+    <Property Name="region_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Regiones">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="int" Nullable="false" />
+    <Property Name="region_nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="region_ordinal" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Pais_Codigo" Type="int" />
+  </EntityType>
+  <EntityType Name="Remuneraciones">
+    <Key>
+      <PropertyRef Name="Remuneracion_Id" />
+    </Key>
+    <Property Name="Remuneracion_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaInicio" Type="date" />
+    <Property Name="FechaTermino" Type="date" />
+    <Property Name="monto" Type="float" />
+    <Property Name="Finiquito_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Usuario_Id" />
+    </Key>
+    <Property Name="Usuario_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario_Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Usuario_Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Privilegio_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MSS_BD.dbo.VW_DOC_Anexos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_DOC_Anexos">
+    <Key>
+      <PropertyRef Name="DocumentoTipo_Id" />
+      <PropertyRef Name="Usuario_Id" />
+      <PropertyRef Name="Personal_Id" />
+      <PropertyRef Name="PorVisar" />
+      <PropertyRef Name="Documento_Id" />
+    </Key>
+    <Property Name="DocumentoTipo_Id" Type="int" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Personal_Id" Type="int" Nullable="false" />
+    <Property Name="PorVisar" Type="bit" Nullable="false" />
+    <Property Name="RutaFinal" Type="varchar" MaxLength="500" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="FechaDesde" Type="date" />
+    <Property Name="FechaHasta" Type="date" />
+    <Property Name="Anexo_Id" Type="int" />
+    <Property Name="Documento_Id" Type="int" Nullable="false" />
+    <Property Name="Dv" Type="char" MaxLength="1" />
+    <Property Name="Rut" Type="int" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="Comuna_Codigo" Type="int" />
+    <Property Name="comuna_nombre" Type="varchar" MaxLength="70" />
+    <Property Name="Direccion" Type="varchar" MaxLength="70" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="TelFijo" Type="varchar" MaxLength="15" />
+    <Property Name="EstadoCivil" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MSS_BD.dbo.VW_DOC_Contratos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_DOC_Contratos">
+    <Key>
+      <PropertyRef Name="Rut" />
+      <PropertyRef Name="Dv" />
+    </Key>
+    <Property Name="DocumentoTipo_Id" Type="int" />
+    <Property Name="Personal_Id" Type="int" />
+    <Property Name="Usuario_Id" Type="int" />
+    <Property Name="PorVisar" Type="bit" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="RutaFinal" Type="varchar" MaxLength="500" />
+    <Property Name="Contrato_Id" Type="int" />
+    <Property Name="CentroCosto_Id" Type="int" />
+    <Property Name="Isapre_Id" Type="int" />
+    <Property Name="Afp_Id" Type="int" />
+    <Property Name="EstructuraSueldo_Id" Type="int" />
+    <Property Name="TipoContrato" Type="varchar" MaxLength="50" />
+    <Property Name="FechaDesde" Type="date" />
+    <Property Name="FechaHasta" Type="date" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="SueldoBase" Type="float" />
+    <Property Name="Gratificacion" Type="float" />
+    <Property Name="BonoAsistencia" Type="float" />
+    <Property Name="BonoProduccion" Type="float" />
+    <Property Name="Colacion" Type="float" />
+    <Property Name="Movilizacion" Type="float" />
+    <Property Name="BonoTurno" Type="float" />
+    <Property Name="CentroNombre" Type="varchar" MaxLength="100" />
+    <Property Name="Centro_Codigo" Type="int" />
+    <Property Name="Afp_Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="Isapre_Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Rut" Type="int" Nullable="false" />
+    <Property Name="Dv" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="Comuna_Codigo" Type="int" />
+    <Property Name="comuna_nombre" Type="varchar" MaxLength="70" />
+    <Property Name="Direccion" Type="varchar" MaxLength="70" />
+    <Property Name="TelFijo" Type="varchar" MaxLength="15" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="EstadoCivil" Type="varchar" MaxLength="15" />
+    <Property Name="Documento_Id" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MSS_BD.dbo.VW_DOC_Finiquitos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_DOC_Finiquitos">
+    <Key>
+      <PropertyRef Name="Documento_Id" />
+      <PropertyRef Name="DocumentoTipo_Id" />
+      <PropertyRef Name="Usuario_Id" />
+      <PropertyRef Name="Personal_Id" />
+      <PropertyRef Name="PorVisar" />
+    </Key>
+    <Property Name="Documento_Id" Type="int" Nullable="false" />
+    <Property Name="DocumentoTipo_Id" Type="int" Nullable="false" />
+    <Property Name="Usuario_Id" Type="int" Nullable="false" />
+    <Property Name="Personal_Id" Type="int" Nullable="false" />
+    <Property Name="PorVisar" Type="bit" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="RutaFinal" Type="varchar" MaxLength="500" />
+    <Property Name="Finiquito_Id" Type="int" />
+    <Property Name="Articulo" Type="varchar" MaxLength="20" />
+    <Property Name="Articulo_Numero" Type="int" />
+    <Property Name="Comentario" Type="varchar" MaxLength="200" />
+    <Property Name="Vacaciones" Type="float" />
+    <Property Name="Comuna_Codigo" Type="int" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Dv" Type="char" MaxLength="1" />
+    <Property Name="Rut" Type="int" />
+    <Property Name="comuna_nombre" Type="varchar" MaxLength="70" />
+    <Property Name="FechaVencimiento" Type="date" />
+    <Property Name="FechaIngreso" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MSS_BD.dbo.VW_Documentos_Visar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_Documentos_Visar">
+    <Key>
+      <PropertyRef Name="PorVisar" />
+      <PropertyRef Name="Personal_Id" />
+      <PropertyRef Name="Rut" />
+      <PropertyRef Name="Dv" />
+      <PropertyRef Name="Pais_Nombre" />
+      <PropertyRef Name="comuna_nombre" />
+      <PropertyRef Name="region_nombre" />
+      <PropertyRef Name="Documento_Id" />
+    </Key>
+    <Property Name="PorVisar" Type="bit" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="NombreDocumento" Type="varchar" MaxLength="50" />
+    <Property Name="Personal_Id" Type="int" Nullable="false" />
+    <Property Name="CentroCosto_Id" Type="int" />
+    <Property Name="EstructuraSueldo_Id" Type="int" />
+    <Property Name="Comuna_Id" Type="int" />
+    <Property Name="Isapre_Id" Type="int" />
+    <Property Name="Pais_Id" Type="int" />
+    <Property Name="Provincia_Id" Type="int" />
+    <Property Name="Region_ID" Type="int" />
+    <Property Name="Afp_Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="Rut" Type="int" Nullable="false" />
+    <Property Name="Dv" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="CentroNombre" Type="varchar" MaxLength="100" />
+    <Property Name="Pais_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="provincia_nombre" Type="varchar" MaxLength="100" />
+    <Property Name="comuna_nombre" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Estructura_Codigo" Type="int" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="region_nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Isapre_Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Documento_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MSS_BD.dbo.Vw_EmpleadosTodos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Vw_EmpleadosTodos">
+    <Key>
+      <PropertyRef Name="Rut" />
+      <PropertyRef Name="Dv" />
+      <PropertyRef Name="Privilegio_Id" />
+    </Key>
+    <Property Name="region_nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Pais_Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="comuna_nombre" Type="varchar" MaxLength="70" />
+    <Property Name="CentroNombre" Type="varchar" MaxLength="100" />
+    <Property Name="provincia_nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Rut" Type="int" Nullable="false" />
+    <Property Name="Dv" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="Direccion" Type="varchar" MaxLength="70" />
+    <Property Name="Pais_Codigo" Type="int" />
+    <Property Name="Region_Codigo" Type="int" />
+    <Property Name="Provincia_Codigo" Type="int" />
+    <Property Name="Comuna_Codigo" Type="int" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="TelFijo" Type="varchar" MaxLength="15" />
+    <Property Name="TelCelular" Type="varchar" MaxLength="15" />
+    <Property Name="NombreContacto" Type="varchar" MaxLength="50" />
+    <Property Name="Parentesco" Type="varchar" MaxLength="20" />
+    <Property Name="TelContactoFijo" Type="varchar" MaxLength="15" />
+    <Property Name="TelContactoCelular" Type="varchar" MaxLength="15" />
+    <Property Name="TipoContrato" Type="varchar" MaxLength="20" />
+    <Property Name="FechaIngreso" Type="date" />
+    <Property Name="CursoOS10" Type="varchar" MaxLength="10" />
+    <Property Name="Credencial" Type="varchar" MaxLength="15" />
+    <Property Name="FechaVencimiento" Type="date" />
+    <Property Name="Calzado" Type="int" />
+    <Property Name="Pantalon" Type="varchar" MaxLength="10" />
+    <Property Name="Polera" Type="varchar" MaxLength="10" />
+    <Property Name="Polar" Type="varchar" MaxLength="10" />
+    <Property Name="Casaca" Type="varchar" MaxLength="10" />
+    <Property Name="Corbata" Type="varchar" MaxLength="10" />
+    <Property Name="Gorro" Type="varchar" MaxLength="10" />
+    <Property Name="Cazadora" Type="varchar" MaxLength="10" />
+    <Property Name="Imagen" Type="image" />
+    <Property Name="CentroCosto_Id" Type="int" />
+    <Property Name="Usuario_Id" Type="int" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="EstructuraSueldo_Id" Type="int" />
+    <Property Name="Privilegio_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Anexos_Documentos">
+    <End Role="Documentos" Type="Self.Documentos" Multiplicity="0..1" />
+    <End Role="Anexos" Type="Self.Anexos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documentos">
+        <PropertyRef Name="Documento_Id" />
+      </Principal>
+      <Dependent Role="Anexos">
+        <PropertyRef Name="Documento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comunas_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+    <End Role="Comunas" Type="Self.Comunas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="provincia_id" />
+      </Principal>
+      <Dependent Role="Comunas">
+        <PropertyRef Name="provincia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_Afp">
+    <End Role="Afp" Type="Self.Afp" Multiplicity="0..1" />
+    <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afp">
+        <PropertyRef Name="Afp_Id" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="Afp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_CentrosDeCostos">
+    <End Role="CentrosDeCostos" Type="Self.CentrosDeCostos" Multiplicity="0..1" />
+    <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CentrosDeCostos">
+        <PropertyRef Name="CentroId" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="CentroCosto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_Documentos">
+    <End Role="Documentos" Type="Self.Documentos" Multiplicity="0..1" />
+    <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documentos">
+        <PropertyRef Name="Documento_Id" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="Documento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_EstructuraSueldos">
+    <End Role="EstructuraSueldos" Type="Self.EstructuraSueldos" Multiplicity="0..1" />
+    <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstructuraSueldos">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contratos_Isapres">
+    <End Role="Isapres" Type="Self.Isapres" Multiplicity="0..1" />
+    <End Role="Contratos" Type="Self.Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isapres">
+        <PropertyRef Name="Isapre_Id" />
+      </Principal>
+      <Dependent Role="Contratos">
+        <PropertyRef Name="Isapre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documentos_DocumentoTipo">
+    <End Role="DocumentoTipo" Type="Self.DocumentoTipo" Multiplicity="1" />
+    <End Role="Documentos" Type="Self.Documentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoTipo">
+        <PropertyRef Name="DocumentoTipo_Id" />
+      </Principal>
+      <Dependent Role="Documentos">
+        <PropertyRef Name="DocumentoTipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documentos_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+    <End Role="Documentos" Type="Self.Documentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="Rut" />
+      </Principal>
+      <Dependent Role="Documentos">
+        <PropertyRef Name="Personal_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documentos_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Documentos" Type="Self.Documentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Documentos">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Finiquito_Documentos">
+    <End Role="Documentos" Type="Self.Documentos" Multiplicity="0..1" />
+    <End Role="Finiquito" Type="Self.Finiquito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documentos">
+        <PropertyRef Name="Documento_Id" />
+      </Principal>
+      <Dependent Role="Finiquito">
+        <PropertyRef Name="Documento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Documentos_DocumentoTipo">
+    <End Role="DocumentoTipo" Type="Self.DocumentoTipo" Multiplicity="1" />
+    <End Role="Log_Documentos" Type="Self.Log_Documentos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoTipo">
+        <PropertyRef Name="DocumentoTipo_Id" />
+      </Principal>
+      <Dependent Role="Log_Documentos">
+        <PropertyRef Name="LogDoc_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Documentos_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Log_Documentos" Type="Self.Log_Documentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Log_Documentos">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Afp">
+    <End Role="Afp" Type="Self.Afp" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afp">
+        <PropertyRef Name="Afp_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Afp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_CentrosDeCostos">
+    <End Role="CentrosDeCostos" Type="Self.CentrosDeCostos" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CentrosDeCostos">
+        <PropertyRef Name="CentroId" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="CentroCosto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Comunas">
+    <End Role="Comunas" Type="Self.Comunas" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comunas">
+        <PropertyRef Name="comuna_id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Comuna_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_EstructuraSueldos">
+    <End Role="EstructuraSueldos" Type="Self.EstructuraSueldos" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstructuraSueldos">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="EstructuraSueldo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Isapres">
+    <End Role="Isapres" Type="Self.Isapres" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isapres">
+        <PropertyRef Name="Isapre_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Isapre_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="Pais_Codigo" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Pais_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="provincia_id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Provincia_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Regiones">
+    <End Role="Regiones" Type="Self.Regiones" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regiones">
+        <PropertyRef Name="region_id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Region_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Usuario_Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="Usuario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Provincias_Regiones">
+    <End Role="Regiones" Type="Self.Regiones" Multiplicity="0..1" />
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regiones">
+        <PropertyRef Name="region_id" />
+      </Principal>
+      <Dependent Role="Provincias">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regiones_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Regiones" Type="Self.Regiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="Pais_Codigo" />
+      </Principal>
+      <Dependent Role="Regiones">
+        <PropertyRef Name="Pais_Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remuneraciones_Finiquito">
+    <End Role="Finiquito" Type="Self.Finiquito" Multiplicity="0..1" />
+    <End Role="Remuneraciones" Type="Self.Remuneraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Finiquito">
+        <PropertyRef Name="Finiquito_Id" />
+      </Principal>
+      <Dependent Role="Remuneraciones">
+        <PropertyRef Name="Finiquito_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Usuarios">
+    <End Role="Privilegios" Type="Self.Privilegios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Privilegios">
+        <PropertyRef Name="Privilegio_Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Privilegio_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CON_Empleados_Rut_Centro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Rut" Type="varchar" Mode="In" />
+    <Parameter Name="CentroCosto" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultaEmpleados_Rut_Centro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Rut" Type="varchar" Mode="In" />
+    <Parameter Name="CentroCosto" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="Prueba" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Param1" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_CON_Documentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Vigencia" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="MSS_BDModelStoreContainer">
+    <EntitySet Name="Afp" EntityType="Self.Afp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Anexos" EntityType="Self.Anexos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CentrosDeCostos" EntityType="Self.CentrosDeCostos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comunas" EntityType="Self.Comunas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contratos" EntityType="Self.Contratos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Documentos" EntityType="Self.Documentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentoTipo" EntityType="Self.DocumentoTipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstructuraSueldos" EntityType="Self.EstructuraSueldos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Finiquito" EntityType="Self.Finiquito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Isapres" EntityType="Self.Isapres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log_Documentos" EntityType="Self.Log_Documentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Privilegios" EntityType="Self.Privilegios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Regiones" EntityType="Self.Regiones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Remuneraciones" EntityType="Self.Remuneraciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VW_DOC_Anexos" EntityType="Self.VW_DOC_Anexos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DOC_Anexos].[DocumentoTipo_Id] AS [DocumentoTipo_Id], 
+    [VW_DOC_Anexos].[Usuario_Id] AS [Usuario_Id], 
+    [VW_DOC_Anexos].[Personal_Id] AS [Personal_Id], 
+    [VW_DOC_Anexos].[PorVisar] AS [PorVisar], 
+    [VW_DOC_Anexos].[RutaFinal] AS [RutaFinal], 
+    [VW_DOC_Anexos].[Fecha] AS [Fecha], 
+    [VW_DOC_Anexos].[FechaDesde] AS [FechaDesde], 
+    [VW_DOC_Anexos].[FechaHasta] AS [FechaHasta], 
+    [VW_DOC_Anexos].[Anexo_Id] AS [Anexo_Id], 
+    [VW_DOC_Anexos].[Documento_Id] AS [Documento_Id], 
+    [VW_DOC_Anexos].[Dv] AS [Dv], 
+    [VW_DOC_Anexos].[Rut] AS [Rut], 
+    [VW_DOC_Anexos].[ApellidoPaterno] AS [ApellidoPaterno], 
+    [VW_DOC_Anexos].[ApellidoMaterno] AS [ApellidoMaterno], 
+    [VW_DOC_Anexos].[Nombres] AS [Nombres], 
+    [VW_DOC_Anexos].[Comuna_Codigo] AS [Comuna_Codigo], 
+    [VW_DOC_Anexos].[comuna_nombre] AS [comuna_nombre], 
+    [VW_DOC_Anexos].[Direccion] AS [Direccion], 
+    [VW_DOC_Anexos].[FechaNacimiento] AS [FechaNacimiento], 
+    [VW_DOC_Anexos].[TelFijo] AS [TelFijo], 
+    [VW_DOC_Anexos].[EstadoCivil] AS [EstadoCivil]
+    FROM [dbo].[VW_DOC_Anexos] AS [VW_DOC_Anexos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DOC_Contratos" EntityType="Self.VW_DOC_Contratos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DOC_Contratos].[DocumentoTipo_Id] AS [DocumentoTipo_Id], 
+    [VW_DOC_Contratos].[Personal_Id] AS [Personal_Id], 
+    [VW_DOC_Contratos].[Usuario_Id] AS [Usuario_Id], 
+    [VW_DOC_Contratos].[PorVisar] AS [PorVisar], 
+    [VW_DOC_Contratos].[Fecha] AS [Fecha], 
+    [VW_DOC_Contratos].[RutaFinal] AS [RutaFinal], 
+    [VW_DOC_Contratos].[Contrato_Id] AS [Contrato_Id], 
+    [VW_DOC_Contratos].[CentroCosto_Id] AS [CentroCosto_Id], 
+    [VW_DOC_Contratos].[Isapre_Id] AS [Isapre_Id], 
+    [VW_DOC_Contratos].[Afp_Id] AS [Afp_Id], 
+    [VW_DOC_Contratos].[EstructuraSueldo_Id] AS [EstructuraSueldo_Id], 
+    [VW_DOC_Contratos].[TipoContrato] AS [TipoContrato], 
+    [VW_DOC_Contratos].[FechaDesde] AS [FechaDesde], 
+    [VW_DOC_Contratos].[FechaHasta] AS [FechaHasta], 
+    [VW_DOC_Contratos].[Descripcion] AS [Descripcion], 
+    [VW_DOC_Contratos].[SueldoBase] AS [SueldoBase], 
+    [VW_DOC_Contratos].[Gratificacion] AS [Gratificacion], 
+    [VW_DOC_Contratos].[BonoAsistencia] AS [BonoAsistencia], 
+    [VW_DOC_Contratos].[BonoProduccion] AS [BonoProduccion], 
+    [VW_DOC_Contratos].[Colacion] AS [Colacion], 
+    [VW_DOC_Contratos].[Movilizacion] AS [Movilizacion], 
+    [VW_DOC_Contratos].[BonoTurno] AS [BonoTurno], 
+    [VW_DOC_Contratos].[CentroNombre] AS [CentroNombre], 
+    [VW_DOC_Contratos].[Centro_Codigo] AS [Centro_Codigo], 
+    [VW_DOC_Contratos].[Afp_Nombre] AS [Afp_Nombre], 
+    [VW_DOC_Contratos].[Isapre_Nombre] AS [Isapre_Nombre], 
+    [VW_DOC_Contratos].[Rut] AS [Rut], 
+    [VW_DOC_Contratos].[Dv] AS [Dv], 
+    [VW_DOC_Contratos].[ApellidoPaterno] AS [ApellidoPaterno], 
+    [VW_DOC_Contratos].[ApellidoMaterno] AS [ApellidoMaterno], 
+    [VW_DOC_Contratos].[Nombres] AS [Nombres], 
+    [VW_DOC_Contratos].[Comuna_Codigo] AS [Comuna_Codigo], 
+    [VW_DOC_Contratos].[comuna_nombre] AS [comuna_nombre], 
+    [VW_DOC_Contratos].[Direccion] AS [Direccion], 
+    [VW_DOC_Contratos].[TelFijo] AS [TelFijo], 
+    [VW_DOC_Contratos].[FechaNacimiento] AS [FechaNacimiento], 
+    [VW_DOC_Contratos].[EstadoCivil] AS [EstadoCivil], 
+    [VW_DOC_Contratos].[Documento_Id] AS [Documento_Id]
+    FROM [dbo].[VW_DOC_Contratos] AS [VW_DOC_Contratos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DOC_Finiquitos" EntityType="Self.VW_DOC_Finiquitos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DOC_Finiquitos].[Documento_Id] AS [Documento_Id], 
+    [VW_DOC_Finiquitos].[DocumentoTipo_Id] AS [DocumentoTipo_Id], 
+    [VW_DOC_Finiquitos].[Usuario_Id] AS [Usuario_Id], 
+    [VW_DOC_Finiquitos].[Personal_Id] AS [Personal_Id], 
+    [VW_DOC_Finiquitos].[PorVisar] AS [PorVisar], 
+    [VW_DOC_Finiquitos].[Fecha] AS [Fecha], 
+    [VW_DOC_Finiquitos].[RutaFinal] AS [RutaFinal], 
+    [VW_DOC_Finiquitos].[Finiquito_Id] AS [Finiquito_Id], 
+    [VW_DOC_Finiquitos].[Articulo] AS [Articulo], 
+    [VW_DOC_Finiquitos].[Articulo_Numero] AS [Articulo_Numero], 
+    [VW_DOC_Finiquitos].[Comentario] AS [Comentario], 
+    [VW_DOC_Finiquitos].[Vacaciones] AS [Vacaciones], 
+    [VW_DOC_Finiquitos].[Comuna_Codigo] AS [Comuna_Codigo], 
+    [VW_DOC_Finiquitos].[Nombres] AS [Nombres], 
+    [VW_DOC_Finiquitos].[ApellidoMaterno] AS [ApellidoMaterno], 
+    [VW_DOC_Finiquitos].[ApellidoPaterno] AS [ApellidoPaterno], 
+    [VW_DOC_Finiquitos].[Dv] AS [Dv], 
+    [VW_DOC_Finiquitos].[Rut] AS [Rut], 
+    [VW_DOC_Finiquitos].[comuna_nombre] AS [comuna_nombre], 
+    [VW_DOC_Finiquitos].[FechaVencimiento] AS [FechaVencimiento], 
+    [VW_DOC_Finiquitos].[FechaIngreso] AS [FechaIngreso]
+    FROM [dbo].[VW_DOC_Finiquitos] AS [VW_DOC_Finiquitos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_Documentos_Visar" EntityType="Self.VW_Documentos_Visar" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_Documentos_Visar].[PorVisar] AS [PorVisar], 
+    [VW_Documentos_Visar].[Fecha] AS [Fecha], 
+    [VW_Documentos_Visar].[NombreDocumento] AS [NombreDocumento], 
+    [VW_Documentos_Visar].[Personal_Id] AS [Personal_Id], 
+    [VW_Documentos_Visar].[CentroCosto_Id] AS [CentroCosto_Id], 
+    [VW_Documentos_Visar].[EstructuraSueldo_Id] AS [EstructuraSueldo_Id], 
+    [VW_Documentos_Visar].[Comuna_Id] AS [Comuna_Id], 
+    [VW_Documentos_Visar].[Isapre_Id] AS [Isapre_Id], 
+    [VW_Documentos_Visar].[Pais_Id] AS [Pais_Id], 
+    [VW_Documentos_Visar].[Provincia_Id] AS [Provincia_Id], 
+    [VW_Documentos_Visar].[Region_ID] AS [Region_ID], 
+    [VW_Documentos_Visar].[Afp_Nombre] AS [Afp_Nombre], 
+    [VW_Documentos_Visar].[Rut] AS [Rut], 
+    [VW_Documentos_Visar].[Dv] AS [Dv], 
+    [VW_Documentos_Visar].[ApellidoPaterno] AS [ApellidoPaterno], 
+    [VW_Documentos_Visar].[ApellidoMaterno] AS [ApellidoMaterno], 
+    [VW_Documentos_Visar].[Nombres] AS [Nombres], 
+    [VW_Documentos_Visar].[FechaNacimiento] AS [FechaNacimiento], 
+    [VW_Documentos_Visar].[Estado] AS [Estado], 
+    [VW_Documentos_Visar].[CentroNombre] AS [CentroNombre], 
+    [VW_Documentos_Visar].[Pais_Nombre] AS [Pais_Nombre], 
+    [VW_Documentos_Visar].[provincia_nombre] AS [provincia_nombre], 
+    [VW_Documentos_Visar].[comuna_nombre] AS [comuna_nombre], 
+    [VW_Documentos_Visar].[Estructura_Codigo] AS [Estructura_Codigo], 
+    [VW_Documentos_Visar].[Descripcion] AS [Descripcion], 
+    [VW_Documentos_Visar].[region_nombre] AS [region_nombre], 
+    [VW_Documentos_Visar].[Isapre_Nombre] AS [Isapre_Nombre], 
+    [VW_Documentos_Visar].[Documento_Id] AS [Documento_Id]
+    FROM [dbo].[VW_Documentos_Visar] AS [VW_Documentos_Visar]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vw_EmpleadosTodos" EntityType="Self.Vw_EmpleadosTodos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vw_EmpleadosTodos].[region_nombre] AS [region_nombre], 
+    [Vw_EmpleadosTodos].[Pais_Nombre] AS [Pais_Nombre], 
+    [Vw_EmpleadosTodos].[comuna_nombre] AS [comuna_nombre], 
+    [Vw_EmpleadosTodos].[CentroNombre] AS [CentroNombre], 
+    [Vw_EmpleadosTodos].[provincia_nombre] AS [provincia_nombre], 
+    [Vw_EmpleadosTodos].[Rut] AS [Rut], 
+    [Vw_EmpleadosTodos].[Dv] AS [Dv], 
+    [Vw_EmpleadosTodos].[ApellidoPaterno] AS [ApellidoPaterno], 
+    [Vw_EmpleadosTodos].[ApellidoMaterno] AS [ApellidoMaterno], 
+    [Vw_EmpleadosTodos].[Nombres] AS [Nombres], 
+    [Vw_EmpleadosTodos].[Direccion] AS [Direccion], 
+    [Vw_EmpleadosTodos].[Pais_Codigo] AS [Pais_Codigo], 
+    [Vw_EmpleadosTodos].[Region_Codigo] AS [Region_Codigo], 
+    [Vw_EmpleadosTodos].[Provincia_Codigo] AS [Provincia_Codigo], 
+    [Vw_EmpleadosTodos].[Comuna_Codigo] AS [Comuna_Codigo], 
+    [Vw_EmpleadosTodos].[FechaNacimiento] AS [FechaNacimiento], 
+    [Vw_EmpleadosTodos].[TelFijo] AS [TelFijo], 
+    [Vw_EmpleadosTodos].[TelCelular] AS [TelCelular], 
+    [Vw_EmpleadosTodos].[NombreContacto] AS [NombreContacto], 
+    [Vw_EmpleadosTodos].[Parentesco] AS [Parentesco], 
+    [Vw_EmpleadosTodos].[TelContactoFijo] AS [TelContactoFijo], 
+    [Vw_EmpleadosTodos].[TelContactoCelular] AS [TelContactoCelular], 
+    [Vw_EmpleadosTodos].[TipoContrato] AS [TipoContrato], 
+    [Vw_EmpleadosTodos].[FechaIngreso] AS [FechaIngreso], 
+    [Vw_EmpleadosTodos].[CursoOS10] AS [CursoOS10], 
+    [Vw_EmpleadosTodos].[Credencial] AS [Credencial], 
+    [Vw_EmpleadosTodos].[FechaVencimiento] AS [FechaVencimiento], 
+    [Vw_EmpleadosTodos].[Calzado] AS [Calzado], 
+    [Vw_EmpleadosTodos].[Pantalon] AS [Pantalon], 
+    [Vw_EmpleadosTodos].[Polera] AS [Polera], 
+    [Vw_EmpleadosTodos].[Polar] AS [Polar], 
+    [Vw_EmpleadosTodos].[Casaca] AS [Casaca], 
+    [Vw_EmpleadosTodos].[Corbata] AS [Corbata], 
+    [Vw_EmpleadosTodos].[Gorro] AS [Gorro], 
+    [Vw_EmpleadosTodos].[Cazadora] AS [Cazadora], 
+    [Vw_EmpleadosTodos].[Imagen] AS [Imagen], 
+    [Vw_EmpleadosTodos].[CentroCosto_Id] AS [CentroCosto_Id], 
+    [Vw_EmpleadosTodos].[Usuario_Id] AS [Usuario_Id], 
+    [Vw_EmpleadosTodos].[Estado] AS [Estado], 
+    [Vw_EmpleadosTodos].[EstructuraSueldo_Id] AS [EstructuraSueldo_Id], 
+    [Vw_EmpleadosTodos].[Privilegio_Id] AS [Privilegio_Id]
+    FROM [dbo].[Vw_EmpleadosTodos] AS [Vw_EmpleadosTodos]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Anexos_Documentos" Association="Self.FK_Anexos_Documentos">
+      <End Role="Documentos" EntitySet="Documentos" />
+      <End Role="Anexos" EntitySet="Anexos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comunas_Provincias" Association="Self.FK_Comunas_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Comunas" EntitySet="Comunas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_Afp" Association="Self.FK_Contratos_Afp">
+      <End Role="Afp" EntitySet="Afp" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_CentrosDeCostos" Association="Self.FK_Contratos_CentrosDeCostos">
+      <End Role="CentrosDeCostos" EntitySet="CentrosDeCostos" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_Documentos" Association="Self.FK_Contratos_Documentos">
+      <End Role="Documentos" EntitySet="Documentos" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_EstructuraSueldos" Association="Self.FK_Contratos_EstructuraSueldos">
+      <End Role="EstructuraSueldos" EntitySet="EstructuraSueldos" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contratos_Isapres" Association="Self.FK_Contratos_Isapres">
+      <End Role="Isapres" EntitySet="Isapres" />
+      <End Role="Contratos" EntitySet="Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documentos_DocumentoTipo" Association="Self.FK_Documentos_DocumentoTipo">
+      <End Role="DocumentoTipo" EntitySet="DocumentoTipo" />
+      <End Role="Documentos" EntitySet="Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documentos_Personal" Association="Self.FK_Documentos_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="Documentos" EntitySet="Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documentos_Usuarios" Association="Self.FK_Documentos_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Documentos" EntitySet="Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Finiquito_Documentos" Association="Self.FK_Finiquito_Documentos">
+      <End Role="Documentos" EntitySet="Documentos" />
+      <End Role="Finiquito" EntitySet="Finiquito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Documentos_DocumentoTipo" Association="Self.FK_Log_Documentos_DocumentoTipo">
+      <End Role="DocumentoTipo" EntitySet="DocumentoTipo" />
+      <End Role="Log_Documentos" EntitySet="Log_Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Documentos_Usuarios" Association="Self.FK_Log_Documentos_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Log_Documentos" EntitySet="Log_Documentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Usuarios" Association="Self.FK_Log_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Afp" Association="Self.FK_Personal_Afp">
+      <End Role="Afp" EntitySet="Afp" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_CentrosDeCostos" Association="Self.FK_Personal_CentrosDeCostos">
+      <End Role="CentrosDeCostos" EntitySet="CentrosDeCostos" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Comunas" Association="Self.FK_Personal_Comunas">
+      <End Role="Comunas" EntitySet="Comunas" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_EstructuraSueldos" Association="Self.FK_Personal_EstructuraSueldos">
+      <End Role="EstructuraSueldos" EntitySet="EstructuraSueldos" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Isapres" Association="Self.FK_Personal_Isapres">
+      <End Role="Isapres" EntitySet="Isapres" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Paises" Association="Self.FK_Personal_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Provincias" Association="Self.FK_Personal_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Regiones" Association="Self.FK_Personal_Regiones">
+      <End Role="Regiones" EntitySet="Regiones" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Usuarios" Association="Self.FK_Personal_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Provincias_Regiones" Association="Self.FK_Provincias_Regiones">
+      <End Role="Regiones" EntitySet="Regiones" />
+      <End Role="Provincias" EntitySet="Provincias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regiones_Paises" Association="Self.FK_Regiones_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Regiones" EntitySet="Regiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remuneraciones_Finiquito" Association="Self.FK_Remuneraciones_Finiquito">
+      <End Role="Finiquito" EntitySet="Finiquito" />
+      <End Role="Remuneraciones" EntitySet="Remuneraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Usuarios" Association="Self.FK_Usuarios_Usuarios">
+      <End Role="Privilegios" EntitySet="Privilegios" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

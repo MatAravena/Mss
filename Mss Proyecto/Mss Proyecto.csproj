@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4BF711AF-C0E5-4B03-8797-6BFDE1956905}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mss_Proyecto</RootNamespace>
+    <AssemblyName>Mss Proyecto</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Matias Aravena\Pegas\MSS\Publicacion\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>es-CL</TargetCulture>
+    <ProductName>Mss Proyecto</ProductName>
+    <PublisherName>Mss Proyecto</PublisherName>
+    <SuiteName>Mss Proyecto</SuiteName>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>66</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>4CDE54844350E06CCC898D60356D78D7F720E73B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mss_converted.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Documentos\Anexos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Anexos.Designer.cs">
+      <DependentUpon>Anexos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusquedaEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusquedaEmpleados.Designer.cs">
+      <DependentUpon>BusquedaEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CentroDeCostos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CentroDeCostos.Designer.cs">
+      <DependentUpon>CentroDeCostos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentos\VigenciaDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\VigenciaDocumentos.Designer.cs">
+      <DependentUpon>VigenciaDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentos\Vigentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Vigentes.Designer.cs">
+      <DependentUpon>Vigentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Int32TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Documentos\Contrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Contrato.Designer.cs">
+      <DependentUpon>Contrato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gigantografia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gigantografia.Designer.cs">
+      <DependentUpon>Gigantografia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs.Designer.cs">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentos\Visar_Remuneraciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Visar_Remuneraciones.Designer.cs">
+      <DependentUpon>Visar_Remuneraciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentos\Visar_Finiquitos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Visar_Finiquitos.Designer.cs">
+      <DependentUpon>Visar_Finiquitos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentos\Visar_Anexos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Visar_Anexos.Designer.cs">
+      <DependentUpon>Visar_Anexos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentos\Visar_Contratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Visar_Contratos.Designer.cs">
+      <DependentUpon>Visar_Contratos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EstructuraSueldos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EstructuraSueldos.Designer.cs">
+      <DependentUpon>EstructuraSueldos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentos\Finiquitos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documentos\Finiquitos.Designer.cs">
+      <DependentUpon>Finiquitos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MensajeControlado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MensajeControlado.Designer.cs">
+      <DependentUpon>MensajeControlado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados.Designer.cs">
+      <DependentUpon>Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario.Designer.cs">
+      <DependentUpon>Usuario.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Documentos\Anexos.resx">
+      <DependentUpon>Anexos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusquedaEmpleados.resx">
+      <DependentUpon>BusquedaEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CentroDeCostos.resx">
+      <DependentUpon>CentroDeCostos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\Contrato.resx">
+      <DependentUpon>Contrato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\Vigentes.resx">
+      <DependentUpon>Vigentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gigantografia.resx">
+      <DependentUpon>Gigantografia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs.resx">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\VigenciaDocumentos.resx">
+      <DependentUpon>VigenciaDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\Visar_Remuneraciones.resx">
+      <DependentUpon>Visar_Remuneraciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\Visar_Finiquitos.resx">
+      <DependentUpon>Visar_Finiquitos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\Visar_Anexos.resx">
+      <DependentUpon>Visar_Anexos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\Visar_Contratos.resx">
+      <DependentUpon>Visar_Contratos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EstructuraSueldos.resx">
+      <DependentUpon>EstructuraSueldos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documentos\Finiquitos.resx">
+      <DependentUpon>Finiquitos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MensajeControlado.resx">
+      <DependentUpon>MensajeControlado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleados.resx">
+      <DependentUpon>Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario.resx">
+      <DependentUpon>Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\MssBD.ConsultaEmpleados_Rut_Centro_Result.datasource" />
+    <None Include="Properties\DataSources\MssBD.Personal.datasource" />
+    <None Include="Properties\DataSources\MssBD.Remuneraciones.datasource" />
+    <None Include="Properties\DataSources\MssBD.VW_Documentos_Visar.datasource" />
+    <None Include="Properties\DataSources\MssBD.VW_DOC_Anexos.datasource" />
+    <None Include="Properties\DataSources\MssBD.VW_DOC_Contratos.datasource" />
+    <None Include="Properties\DataSources\MssBD.VW_DOC_Finiquitos.datasource" />
+    <None Include="Properties\DataSources\MssBD.VW_DOC_Historial.datasource" />
+    <None Include="Properties\DataSources\MssBD.Vw_EmpleadosTodos.datasource" />
+    <None Include="Properties\DataSources\MssBD.VW_Logs.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MssBD\MssBD.csproj">
+      <Project>{712ce018-1ca1-46de-a38d-eca4e974b4af}</Project>
+      <Name>MssBD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{5aec00e9-9189-49dd-9764-a25edfef6e60}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-1 - Mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\garbage-2 - mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.Office.Interop.Word">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Vbe.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mss_converted.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
